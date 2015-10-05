@@ -1,5 +1,5 @@
 # Markdown editor
-This is the clone of [VueJS example](http://vuejs.org/examples/index.html). The app stores your data in ``localStorage``, so what you've typed is available on every page reload.
+This is the clone of [VueJS example](http://vuejs.org/examples/index.html). The app stores your data in ``localStorage``. Everything you've typed is available on every page reload.
 
 Useful links:
 - [Marked parser](https://github.com/chjj/marked)

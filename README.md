@@ -5,8 +5,9 @@ If you've noticed problems (eg live example doesn't work), feel free to report i
 
 - [TreeView](./treeview)
 - [Markdown editor](./markdown_editor)
+- [SoundCloud search](./soundcloud_search)
 - [TodoMVC](https://github.com/matreshkajs/matreshka_todomvc) (external repo)
 
 There will be more examples.
 
-Scripts are stored in [RawGit](https://rawgit.com/) CDN.
+Scripts for live examples are stored in [RawGit](https://rawgit.com/) CDN.
