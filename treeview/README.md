@@ -1,4 +1,7 @@
 # TreeView example
+
+[Live Example](http://matreshkajs.github.io/matreshka_examples/treeview/)
+
 This is the TreeView application written in Matreshka.js framework. The example stores full application state in ``localStorage`` (tree structure, labels, expanded or not). That means all your changes wll be restored on every reload.
 
 A short list of used Matreshka APIs for further reading:
