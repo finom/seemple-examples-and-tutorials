@@ -1,0 +1,19 @@
+{
+	"linenums": true,
+	"embed": [{
+		"type": "htmlpage",
+		"url": "http://matreshkajs.github.io/matreshka_examples/treeview/"
+	}, {
+		"type": "js",
+		"label": "app.js",
+		"path": "treeview/js/app.js"
+	}, {
+		"type": "js",
+		"label": "tree.class.js",
+		"path": "treeview/js/tree.class.js"
+	}, {
+		"type": "js",
+		"label": "tree-leaf.class.js",
+		"path": "treeview/js/tree-leaf.class.js"
+	}]
+}
