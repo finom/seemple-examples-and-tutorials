@@ -1,1 +1,10 @@
-{}
+{
+	"linenums": true,
+	"embed": [{
+		"type": "htmlpage",
+		"url": "http://matreshkajs.github.io/matreshka_examples/markdown_editor/"
+	}, {
+		"label": "app.js",
+		"path": "markdown_editor/js/app.js"
+	}]
+}
