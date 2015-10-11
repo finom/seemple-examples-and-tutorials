@@ -5,6 +5,10 @@
 		"type": "htmlpage",
 		"url": "http://matreshkajs.github.io/matreshka_examples/markdown_editor/"
 	}, {
+		"type": "html",
+		"label": "index.html",
+		"path": "treeview/index.html"
+	}, {
 		"label": "app.js",
 		"path": "markdown_editor/js/app.js"
 	}]
