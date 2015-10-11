@@ -7,7 +7,7 @@
 	}, {
 		"type": "html",
 		"label": "index.html",
-		"path": "treeview/index.html"
+		"path": "soundcloud_search/index.html"
 	}, {
 		"type": "js",
 		"label": "app.js",
