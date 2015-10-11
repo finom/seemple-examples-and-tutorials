@@ -7,7 +7,7 @@
 	}, {
 		"type": "html",
 		"label": "index.html",
-		"path": "treeview/index.html"
+		"path": "markdown_editor/index.html"
 	}, {
 		"label": "app.js",
 		"path": "markdown_editor/js/app.js"
