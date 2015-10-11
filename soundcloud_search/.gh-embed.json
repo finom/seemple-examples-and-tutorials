@@ -1,0 +1,19 @@
+{
+	"linenums": true,
+	"embed": [{
+		"type": "htmlpage",
+		"url": "http://matreshkajs.github.io/matreshka_examples/soundcloud_search/"
+	}, {
+		"type": "js",
+		"label": "app.js",
+		"path": "soundcloud_search/js/app.js"
+	}, {
+		"type": "js",
+		"label": "track.class.js",
+		"path": "soundcloud_search/js/track.class.js"
+	}, {
+		"type": "js",
+		"label": "tracks.class.js",
+		"path": "soundcloud_search/js/tracks.class.js"
+	}]
+}
