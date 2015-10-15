@@ -24,7 +24,8 @@ var Tree = Class({
 			})
 			.on('click::addBtn', function(evt) {
 				this.push({
-					label: 'New Item'
+					label: 'New Item',
+					expanded: true
 				});
 			});
 	},
