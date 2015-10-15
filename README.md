@@ -10,11 +10,7 @@ If you've noticed problems (eg live example doesn't work), feel free to report i
 
 **Other examples**
 - [TodoMVC](https://github.com/matreshkajs/matreshka_todomvc)
+- [Matreshka.js ECMAScript.next boilerplate](https://github.com/matreshkajs/matreshka_boilerplate)
 
 **Todo**
-- Prerendering on a server
-- ECMAScript.next boilerplate (Babel, Gulp, SystemJS etc)
-
-There will be more examples.
-
-Scripts for live examples are stored in [RawGit](https://rawgit.com/) CDN.
+- Prerendering on a server.
