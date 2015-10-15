@@ -2,7 +2,12 @@
 	"linenums": true,
 	"embed": [{
 		"type": "htmlpage",
+		"label": "Result",
 		"url": "http://matreshkajs.github.io/matreshka_examples/treeview/"
+	}, {
+		"type": "html",
+		"label": "index.html",
+		"path": "treeview/index.html"
 	}, {
 		"type": "js",
 		"label": "app.js",

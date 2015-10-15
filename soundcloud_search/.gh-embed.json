@@ -2,7 +2,12 @@
 	"linenums": true,
 	"embed": [{
 		"type": "htmlpage",
+		"label": "Result",
 		"url": "http://matreshkajs.github.io/matreshka_examples/soundcloud_search/"
+	}, {
+		"type": "html",
+		"label": "index.html",
+		"path": "soundcloud_search/index.html"
 	}, {
 		"type": "js",
 		"label": "app.js",
