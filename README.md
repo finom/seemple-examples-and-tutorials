@@ -13,4 +13,4 @@ If you've noticed problems (eg live example doesn't work), feel free to report i
 - [Matreshka.js ECMAScript.next boilerplate](https://github.com/matreshkajs/matreshka_boilerplate)
 
 **Todo**
-- Prerendering on a server.
+- Prerendering on a server (on hold).
