@@ -43,7 +43,7 @@ var Tracks = Class({
 	},
 	loadTracks: function(callback) {
 		$.ajax({
-			url: 'http://api.soundcloud.com/tracks.json',
+			url: '//api.soundcloud.com/tracks.json',
 			dataType: "json",
 			data: {
 				q: this.query,
