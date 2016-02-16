@@ -12,5 +12,5 @@ If you've noticed problems (eg live example doesn't work), feel free to report i
 - [TodoMVC](https://github.com/matreshkajs/matreshka_todomvc)
 
 **Todo**
-- Prerendering on a server (on hold).
+- Prerendering on a server
 - Webpack Boilerplate
