@@ -12,29 +12,30 @@
 	<div class="container">
 		<form class="new-phone">
 			<h2>Add new contact</h2>
-			<h6>* All fileds are required</h6>
+			<h6>All fileds are required</h6>
 			<div class="row">
 				<div class="six columns">
 					<label>First Name</label>
-					<input class="u-full-width" name="first_name" type="text">
+					<input class="u-full-width" name="first_name" type="text" required>
 				</div>
 				<div class="six columns">
 					<label>Last Name</label>
-					<input class="u-full-width" name="last_name" type="text">
+					<input class="u-full-width" name="last_name" type="text" required>
 				</div>
 			</div>
 			<div class="row">
 				<div class="six columns">
 					<label>Date of Birth</label>
-					<input class="u-full-width" name="birth_date" type="date">
+					<input class="u-full-width" name="birth_date" type="date" required>
 				</div>
 				<div class="six columns">
 					<label>Phone Number</label>
-					<input class="u-full-width" name="phone_number" type="tel">
+					<input class="u-full-width" name="phone_number" type="tel" required>
 				</div>
 			</div>
 			<input class="button-primary" type="submit" value="Submit">
 		</form>
+		<hr>
 		<section class="result-container">
 			<h2>Search</h2>
 			<input list="search-list" class="search u-full-width" type="search">
@@ -278,7 +279,7 @@
 ]
 	</script>
 
-	<script src="https://cdn.jsdelivr.net/matreshka/latest/matreshka.min.js"></script>
+	<script src="https://matreshkajs.github.io/matreshka/matreshka.min.js"></script>
 	<script src="js/phone.js"></script>
 	<script src="js/phones.js"></script>
 	<script src="js/app.js"></script>

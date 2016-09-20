@@ -1,21 +1,34 @@
-var TreeLeaf = Class({
-	'extends': MK.Object,
-	constructor: function(data) {
-		this.set(data)
-			.addDataKeys('subTree label expanded')
-			.setClassFor('subTree', Tree)
-			.linkProps('length', [this.subTree, 'length'])
+class TreeLeaf extends Matreshka.Object {
+	constructor(data) {
+		super()
+			.set(data)
+			.addDataKeys('subTree', 'label', 'expanded')
+			.instantiate('subTree', Tree)
+			.calc('subTreeLength', {
+				object: this.subTree,
+				key: 'length'
+			})
 			.on('click::expandBtn', function(evt) {
 				this.expanded = !this.expanded;
 			});
-	},
-
-	onRender: function() {
-		this
-			.bindNode('removeBtn', ':sandbox .remove')
-			.bindNode('expandBtn', ':sandbox .expand')
-			.bindNode('label', ':sandbox .label', MK.binders.text())
-			.bindNode('expanded', ':sandbox', MK.binders.className('!closed'))
-			.bindNode('length', ':sandbox', MK.binders.className('vtree-has-children'));
 	}
-});
+
+	onRender() {
+		this.bindNode({
+			removeBtn: ':sandbox .remove',
+			expandBtn: ':sandbox .expand',
+			label: {
+				node: ':sandbox .label',
+				binder: Matreshka.binders.text()
+			},
+			expanded: {
+				node: ':sandbox',
+				binder: Matreshka.binders.className('closed', false)
+			},
+			subTreeLength: {
+				node: ':sandbox',
+				binder: Matreshka.binders.className('vtree-has-children')
+			}
+		});
+	}
+}

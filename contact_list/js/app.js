@@ -1,45 +1,36 @@
-"use srrict";
-var app = new Class({
-	'extends': MK.Object,
-	constructor: function() {
-		this
+const app = new class Application extends Matreshka.Object {
+	constructor() {
+		super()
 			.set({
-				phones: JSON.parse(localStorage.phoneBook || 'null') || fakeData,
-				names: ['first_name', 'last_name', 'birth_date', 'phone_number']
+				phones: JSON.parse(localStorage.phoneBook || 'null') || fakeData
 			})
-			.addDataKeys(this.names)
+			.addDataKeys('first_name', 'last_name', 'birth_date', 'phone_number')
 			.bindNode({
 				sandbox: 'body',
 				form: ':sandbox .new-phone'
 			})
-			.setClassFor('phones', Phones)
+			.instantiate('phones', Phones)
 			.on({
-				'phones@modify phones.*@modify': function(evt) {
-					localStorage.phoneBook = JSON.stringify(this.phones)
+				'phones@modify phones.*@modify': evt => {
+					localStorage.phoneBook = JSON.stringify(this.phones);
 				},
-				'submit::form': function(evt) {
+				'submit::form': evt => {
 					evt.preventDefault();
-					if(this.keys().every(function(key) {
-						return this[key];
-					}, this)) {
-						this.phones.push(this.toJSON());
-						this.each(function(value, key) {
-							this[key] = '';
-						}, this);
-					}
+					this.phones.push(this.toJSON());
 
+					for(const key of this.keys()) {
+						this[key] = '';
+					}
 				}
 			})
 			.parseForm();
+	}
 
-
-	},
-
-	parseForm: function() {
-		for(var i = 0; i < this.names.length; i++){
-			this.bindNode(this.names[i], this.nodes.form[this.names[i]]);
+	parseForm() {
+		for(const key of this.keys()) {
+			this.bindNode(key, this.nodes.form[key]);
 		}
 
 		return this;
 	}
-});
+}

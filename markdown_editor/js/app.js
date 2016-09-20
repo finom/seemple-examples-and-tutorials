@@ -1,13 +1,17 @@
-window.app = new Class({
-	'extends': MK,
-	constructor: function() {
-		this
+window.app = new class Application extends Matreshka {
+	constructor() {
+		super()
 			.set('source', localStorage.mdSource || '# Hey')
-			.bindNode('source', '.source')
-			.bindNode('result', '.result', MK.binders.html())
-			.onDebounce('change:source', function() {
+			.bindNode({
+				source: '.source',
+				result: {
+					node: '.result',
+					binder: Matreshka.binders.html()
+				}
+			})
+			.calc('result', 'source', marked, { debounceCalcDelay: 300 })
+			.on('change:result', () => {
 				localStorage.mdSource = this.source;
-				this.result = marked(this.source);
-			}, 300, true);
+			});
 	}
-});
+}

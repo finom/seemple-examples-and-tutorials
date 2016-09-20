@@ -1,9 +1,14 @@
-var Tracks = Class({
-	'extends': MK.Array,
-	Model: Track,
-	itemRenderer: '#track_template',
-	constructor: function() {
-		this
+class Tracks extends Matreshka.Array {
+	get Model() {
+		return Track;
+	}
+
+	get itemRenderer() {
+		return '#track_template';
+	}
+
+	constructor() {
+		super()
 			.set({
 				query: localStorage.matreshkaTracksQuery || ''
 			})
@@ -14,19 +19,17 @@ var Tracks = Class({
 				query: ':bound(form) .query'
 			})
 			.on({
-				'submit::form': function(evt) {
-					this.loadTracks(function(response) {
-						this.recreate(response);
-					});
-					localStorage.matreshkaTracksQuery = this.query;
+				'submit::form': evt => {
 					evt.preventDefault();
+					this.loadTracks().then(data => this.recreate(data));
+					localStorage.matreshkaTracksQuery = this.query;
 				},
-				'*@ended::stream': function(evt) {
-					var track = evt.self;
+				'*@ended::stream': evt => {
+					const track = evt.self;
 					this[(this.indexOf(track) + 1) % this.length].play();
 				},
-				'*@play::stream': function(evt) {
-					var track = evt.self;
+				'*@play::stream': evt => {
+					const track = evt.self;
 					if (this.lastPlayed && this.lastPlayed !== track) {
 						this.lastPlayed.stop();
 					}
@@ -36,24 +39,22 @@ var Tracks = Class({
 			});
 
 		if (this.query) {
-			this.loadTracks(function(response) {
-				this.recreate(response);
-			});
+			this.loadTracks().then(data => this.recreate(data));
 		}
-	},
-	loadTracks: function(callback) {
-		$.ajax({
-			url: '//api.soundcloud.com/tracks.json',
-			dataType: "json",
-			data: {
-				q: this.query,
-				client_id: client_id,
-				limit: 20,
-				offset: 0,
-				filter: 'streamable',
-				order: 'hotness'
-			},
-			success: callback.bind(this)
-		});
 	}
-});
+
+	loadTracks() {
+		const params = {
+			q: this.query,
+			client_id: client_id,
+			limit: 20,
+			offset: 0,
+			filter: 'streamable',
+			order: 'hotness'
+		};
+
+		const paramsStr = Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
+
+		return fetch(`//api.soundcloud.com/tracks.json?${paramsStr}`).then(resp => resp.json());
+	}
+}

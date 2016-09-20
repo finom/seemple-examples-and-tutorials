@@ -2,6 +2,14 @@
 	cursor: pointer;
 }
 
+.remove {
+	color: #999;
+}
+
+.remove:hover {
+	color: #222;
+}
+
 td:first-child {
 	padding: 12px 15px;
 }
@@ -19,4 +27,23 @@ td:first-child {
 	border-radius: 4px;
 	box-shadow: none;
 	box-sizing: border-box;
+}
+
+th {
+	position: relative;
+}
+
+th.sort-asc::after, th.sort-desc::after {
+	position: absolute;
+	vertical-align: middle;
+	margin-left: 1rem;
+	font-size: 1.5rem;
+}
+
+th.sort-asc::after {
+	content: '▼';
+}
+
+th.sort-desc::after {
+	content: '▲';
 }

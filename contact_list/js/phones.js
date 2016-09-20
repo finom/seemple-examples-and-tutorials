@@ -1,14 +1,19 @@
-"use strict";
+class Phones extends Matreshka.Array {
+	get Model() {
+		return Phone;
+	}
 
-var Phones = Class({
-	'extends': MK.Array,
-	Model: Phone,
-	itemRenderer: '#phone-template',
-	constructor: function(data, app) {
-		this
+	get itemRenderer() {
+		return '#phone-template';
+	}
+
+	constructor(data, app) {
+		super(...data)
 			.set({
-				sortDir: -1,
-				sortBy: null
+				order: {
+					key: null,
+					direction: null
+				}
 			})
 			.bindNode({
 				sandbox: app.select('.result-container'),
@@ -16,44 +21,63 @@ var Phones = Class({
 				search: ':sandbox .search',
 				searchList: ':sandbox #search-list'
 			})
+			.bindNode('order', '[data-sort]', {
+				on: 'click',
+				getValue({ previousValue }) {
+					const dataSort = this.dataset.sort;
+					const newOrder = { key: dataSort };
+
+					if(previousValue.key === dataSort) {
+						newOrder.direction = previousValue.direction === 'asc' ? 'desc' : 'asc';
+					} else {
+						newOrder.direction = 'asc';
+					}
+
+					return newOrder;
+				}
+ 			})
+			.bindNode('order', '[data-sort]', {
+				setValue(v) {
+					this.classList.remove('sort-asc', 'sort-desc');
+
+					if(this.dataset.sort === v.key) {
+						this.classList.add(`sort-${v.direction}`);
+					}
+				}
+			})
 			.on({
-				'click::([data-sort])': function(evt) {
-					var sortBy = evt.target.dataset.sort,
-						sortDir = this.sortBy == sortBy ? -this.sortDir : -1;
-
-					this.sort(function(a, b) {
-						return a[sortBy].toLowerCase() > b[sortBy].toLowerCase() ? -sortDir : sortDir;
-					});
-
-					this.sortDir = sortDir;
-					this.sortBy = sortBy;
+				'change:order': () => {
+					const { order } = this;
+					this.orderBy(order.key, order.direction);
 				},
 				'modify *@modify': function() {
-					var searchList = this.nodes.searchList;
+					const { searchList } = this.nodes;
 					searchList.innerHTML = '';
-					this.forEach(function(item) {
-						item.each(function(value, key) {
-							searchList.appendChild(MK.extend(document.createElement('option'), {
-								value: value,
-								innerHTML: value
-							}))
-						});
-					});
-				},
-				'change:search modify *@modify': function() {
-					var search = this.search.toLowerCase();
-					this.forEach(function(item) {
-						var include = false;
-						item.each(function(value) {
-							if(~value.toLowerCase().indexOf(search)) {
-								include = true;
-							}
 
-						});
+					for(const item of this) {
+						for(const value of item) {
+							const option = searchList.appendChild(document.createElement('option'));
+							option.value = value;
+							option.innerHTML = value;
+						}
+					}
+				},
+				'change:search modify *@modify': () => {
+					const search = this.search.toLowerCase();
+					for(const item of this) {
+						let include = false;
+
+						for(const value of item) {
+							if(value.toLowerCase().includes(search)) {
+								include = true;
+								break;
+							}
+						}
+
 						item.visible = include;
-					});
+					}
 				}
 			})
 			.recreate(data);
 	}
-});
+}
