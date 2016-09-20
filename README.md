@@ -6,7 +6,7 @@ If you've noticed problems (eg live example doesn't work), feel free to report i
 - [TreeView](./treeview)
 - [Markdown editor](./markdown_editor)
 - [SoundCloud search](./soundcloud_search)
-- [Contact list](./soundcloud_search)
+- [Contact list](./contact_list)
 
 **Other examples**
 - [TodoMVC](https://github.com/matreshkajs/todomvc)
