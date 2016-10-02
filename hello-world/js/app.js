@@ -1,21 +1,24 @@
-// сохраняем html байндер в переменную с коротким именем
+// store html binder in a short variable
 const htmlBinder = Matreshka.binders.html;
 
-// создаём класс, который наследуется от Matreshka
+// create a class that inherits Matreshka
 class Application extends Matreshka {
     constructor() {
         super();
 
-        // связываем свойство x и текстовое поле
+        // bind the property x and the text field
         this.bindNode('x', '.my-input');
 
-        // связываем свойство x и блок с классом my-output
+        // bind the property x and the ".my-output" block
         this.bindNode('x', '.my-output', htmlBinder());
 
-        // слушаем изменения свойства x
+        // if the property "х" has changed,
+        // inform about it in the console
         this.on('change:x', () =>
             console.log(`x изменен на "${this.x}"`));
     }
 }
 
 const app = new Application();
+
+app.x = 'Hello World!';
