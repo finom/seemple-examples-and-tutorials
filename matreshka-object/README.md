@@ -4,7 +4,7 @@
 
 This example explains a purpose of [Matreshka.Object](https://matreshka.io/#!Matreshka.Object). We're going to implement a simple login form with two text fields: login and password and two checkboxes: «show password» and «remember me». There’s also one button: «sign in». Let’s say that the validation of the form is passed when the login length is not less than 4 characters and the password one is not less than 5 characters.
 
-[Demo](https://matreshkajs.github.io/examples/hello-world-object/)
+[Demo](https://matreshkajs.github.io/examples/matreshka-object/)
 
 A little theory: ``Matreshka.Object`` plays the role of the class which creates objects of a key-value type. In each class instance the properties which are responsible for the data (the ones that will be passed to the server, for example) can be separated from other properties (the ones that the server doesn’t need but define the application behaviour). In this case, login, password and “remember me” are the data which we send to the server, but the property that defines if the form is valid is not passed.
 
