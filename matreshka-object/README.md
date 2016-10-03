@@ -1,4 +1,4 @@
-# "Hello World" for ``Matreshka.Object`` class
+# Simple ``Matreshka.Object`` class example
 
 ![](assets/login-form-screenshot.png)
 
@@ -79,7 +79,7 @@ As you see, for the other elements a nonstandard ``:sandbox`` selector is used, 
 
 Then bind the button which is responsible for the form submission to ``"isValid"`` property. When ``"isValid"`` equals ``true``, add ``"disabled"`` class name to the element, when it equals ``false`` — remove it. This is an example of the one-way binder, i. e. the object property value influences the state of HTML element, but not vice versa.
 
-```
+```js
 .bindNode("isValid", ":sandbox .submit", {
   setValue(v) {
     this.classList.toggle("disabled", !v);
