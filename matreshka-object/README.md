@@ -151,3 +151,5 @@ loginForm.userName = "Chuck Norris";
 loginForm.password = "roundhouse_kick";
 loginForm.showPassword = true;
 ```
+
+Further reading: [Matreshka.Array](https://github.com/matreshkajs/examples/tree/master/matreshka-array)
