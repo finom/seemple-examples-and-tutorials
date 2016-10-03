@@ -209,4 +209,3 @@ class Users extends Matreshka.Array {
     }
 }
 ```
-**... coming soon**
