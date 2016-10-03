@@ -36,7 +36,7 @@ this.setData({
 
 [setData](https://matreshka.io/#!Matreshka.Object-setData) method does not only sets values but it also declares properties which are responsible for the data. That is "userName", "password" and "rememberMe" must be passed to the server (in this example we will just print JSON on the screen).
 
-Since Matreshka.js urges to use all the awesomeness of ECMAScript 2015 and since ``Matreshka.Object`` constructor calls ``setData`` internally, we're going to put the default data to a single ``super`` call to make our code look nicer. The following code makes the same as the previous one.
+Since Matreshka.js urges to use all the awesomeness of ECMAScript 2015 and since ``Matreshka.Object`` constructor calls ``setData`` internally, we're going to put the default data to a single ``super`` call (which does the same as ``Matreshka.Object.call(this, { ... })`` would do) to make our code look nicer. The following code makes the same as the previous one.
 
 ```js
 super({
@@ -81,9 +81,9 @@ Then bind the button which is responsible for the form submission to ``"isValid"
 
 ```js
 .bindNode("isValid", ":sandbox .submit", {
-  setValue(v) {
-    this.classList.toggle("disabled", !v);
-  }
+    setValue(v) {
+        this.classList.toggle("disabled", !v);
+    }
 })
 ```
 

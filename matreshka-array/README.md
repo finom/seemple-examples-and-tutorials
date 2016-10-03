@@ -86,4 +86,34 @@ constructor(data) {
 }
 ```
 
+While creating the instance class:
+
+- ``sandbox`` property is bound to ``.users`` element creating a sandbox (class boundary effect on HTML).
+- ``container`` property is bound to ``:sandbox tbody`` element determining HTML node where the rendered array items will be inserted into.
+- add the passed data to the array with the help of [recreate](https://matreshka.io/#!Matreshka.Array-recreate) method.
+
+That's good enough. But we're going to use all the awesomeness of ECMASCript 2015 and we're going to use ``super`` call to fill the collection with passed data.
+
+```js
+constructor(data) {
+    super(...data)
+        .bindNode('sandbox', '.users')
+        .bindNode('container', ':sandbox tbody')
+        .rerender();
+}
+```
+- Add new items to the collecton via ``super`` call (which does the same as ``Matreshka.Array.apply(this, data)`` would do).
+- ``sandbox`` property is bound to ``.users`` element creating a sandbox.
+- ``container`` property is bound to ``:sandbox tbody`` element.
+- add the passed data to the array with the help of [recreate](https://matreshka.io/#!Matreshka.Array-recreate) method.
+- Call [rerender](https://matreshka.io/#!Matreshka.Array-rerender) method to render the collection (since we've bound ``container`` later than added new items).
+
+Now declare a "model". ``User`` class is inherited from the familiar ``Matreshka.Object``.
+
+```js
+class User extends Matreshka.Object {
+  constructor(data) { ... }
+}
+```
+
 **... coming soon**
