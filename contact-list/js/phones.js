@@ -9,7 +9,8 @@ class Phones extends Matreshka.Array {
     }
 
     constructor(data, app) {
-        super(...data)
+        super(...data);
+        this
             .set({
                 order: {
                     key: null,
@@ -55,8 +56,8 @@ class Phones extends Matreshka.Array {
                     const { searchList } = this.nodes;
                     searchList.innerHTML = '';
 
-                    for (const item of this) {
-                        for (const value of item) {
+                    for (let item of this) { // eslint-disable-line prefer-const
+                        for (let value of item) { // eslint-disable-line prefer-const
                             const option = searchList.appendChild(document.createElement('option'));
                             option.value = value;
                             option.innerHTML = value;
@@ -65,10 +66,10 @@ class Phones extends Matreshka.Array {
                 },
                 'change:search modify *@modify': () => {
                     const search = this.search.toLowerCase();
-                    for (const item of this) {
+                    for (let item of this) { // eslint-disable-line prefer-const
                         let include = false;
 
-                        for (const value of item) {
+                        for (let value of item) { // eslint-disable-line prefer-const
                             if (value.toLowerCase().includes(search)) {
                                 include = true;
                                 break;

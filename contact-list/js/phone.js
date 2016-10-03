@@ -1,13 +1,13 @@
 class Phone extends Matreshka.Object {
     constructor(data, parent) {
-        super(data)
-            .set('visible', true)
+        super(data);
+        this.set('visible', true)
             .on({
                 'click::(.remove)': () => parent.pull(this),
                 render: () => {
                     const fields = this.$('[data-key]');
 
-                    for (const field of fields) {
+                    for (let field of fields) { // eslint-disable-line prefer-const
                         this.bindNode(field.dataset.key, field, Matreshka.binders.text());
                     }
 

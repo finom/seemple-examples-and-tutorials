@@ -1,7 +1,8 @@
 /* globals fakeData, Phones */
 class Application extends Matreshka.Object {
     constructor() {
-        super()
+        super();
+        this
             .set({
                 phones: JSON.parse(localStorage.phoneBook || 'null') || fakeData
             })
@@ -19,7 +20,7 @@ class Application extends Matreshka.Object {
                     evt.preventDefault();
                     this.phones.push(this.toJSON());
 
-                    for (const key of this.keys()) {
+                    for (let key of this.keys()) { // eslint-disable-line prefer-const
                         this[key] = '';
                     }
                 }
@@ -28,7 +29,7 @@ class Application extends Matreshka.Object {
     }
 
     parseForm() {
-        for (const key of this.keys()) {
+        for (let key of this.keys()) { // eslint-disable-line prefer-const
             this.bindNode(key, this.nodes.form[key]);
         }
 

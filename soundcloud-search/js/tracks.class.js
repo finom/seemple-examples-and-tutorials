@@ -9,7 +9,8 @@ class Tracks extends Matreshka.Array {
     }
 
     constructor(soundCloudClientID) {
-        super()
+        super();
+        this
             .set({
                 query: localStorage.matreshkaTracksQuery || '',
                 soundCloudClientID

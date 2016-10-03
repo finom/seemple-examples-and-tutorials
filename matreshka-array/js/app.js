@@ -1,8 +1,8 @@
 /* globals data */
 class User extends Matreshka.Object {
     constructor(data) {
-        super(data)
-        .on('render', () => {
+        super(data);
+        this.on('render', () => {
             this.bindNode({
                 name: ':sandbox .name',
                 email: ':sandbox .email',
@@ -21,10 +21,10 @@ class Users extends Matreshka.Array {
         return '#user_template';
     }
     constructor(data) {
-        super(...data)
-        .bindNode('sandbox', '.users')
-        .bindNode('container', ':sandbox tbody')
-        .rerender();
+        super(...data);
+        this.bindNode('sandbox', '.users')
+            .bindNode('container', ':sandbox tbody')
+            .rerender();
     }
 }
 

@@ -1,8 +1,8 @@
 /* global marked */
 class Application extends Matreshka {
     constructor() {
-        super()
-            .set('source', localStorage.mdSource || '# Hey')
+        super();
+        this.set('source', localStorage.mdSource || '# Hey')
             .bindNode({
                 source: '.source',
                 result: {

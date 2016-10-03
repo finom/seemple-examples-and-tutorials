@@ -1,7 +1,8 @@
 /* global Tree */
 class TreeLeaf extends Matreshka.Object {
     constructor(data) {
-        super()
+        super();
+        this
             .set(data)
             .addDataKeys('subTree', 'label', 'expanded')
             .instantiate('subTree', Tree)

@@ -15,7 +15,7 @@ class Application extends Matreshka {
         // if the property "х" has changed,
         // inform about it in the console
         this.on('change:x', () =>
-            console.log(`is changed to "${this.x}"`)); // eslint-disable-line no-console
+            console.log(`x is changed to "${this.x}"`)); // eslint-disable-line no-console
     }
 }
 
