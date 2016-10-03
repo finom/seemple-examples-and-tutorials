@@ -1,15 +1,12 @@
-const className = Matreshka.binders.className;
-
 class LoginForm extends Matreshka.Object {
-    constructor () {
+    constructor() {
         super({
             userName: '',
             password: '',
             rememberMe: true
         })
-        .calc('isValid', ['userName', 'password'], (userName, password) => {
-            return userName.length >= 4 && password.length >= 5;
-        })
+        .calc('isValid', ['userName', 'password'],
+            (userName, password) => userName.length >= 4 && password.length >= 5)
         .bindNode({
             sandbox: '.login-form',
             userName: ':sandbox .user-name',
@@ -17,14 +14,15 @@ class LoginForm extends Matreshka.Object {
             showPassword: ':sandbox .show-password',
             rememberMe: ':sandbox .remember-me'
         })
-        .bindNode('isValid', ':sandbox .submit', className('disabled', false))
-        .bindNode( 'showPassword', ':bound(password)', {
+        .bindNode('isValid', ':sandbox .submit',
+            Matreshka.binders.className('disabled', false))
+        .bindNode('showPassword', ':bound(password)', {
             getValue: null,
             setValue(v) {
                 this.type = v ? 'text' : 'password';
             }
         })
-        .on('submit::sandbox', evt => {
+        .on('submit::sandbox', (evt) => {
             this.login();
             evt.preventDefault();
         });
@@ -32,11 +30,11 @@ class LoginForm extends Matreshka.Object {
 
     login() {
         if (this.isValid) {
-            alert(JSON.stringify(this));
+            alert(JSON.stringify(this)); // eslint-disable-line no-alert
         }
-        
+
         return this;
     }
 }
 
-const loginForm = new LoginForm();
+const loginForm = new LoginForm(); // eslint-disable-line no-unused-vars
