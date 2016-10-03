@@ -112,8 +112,101 @@ Now declare a "model". ``User`` class is inherited from the familiar ``Matreshka
 
 ```js
 class User extends Matreshka.Object {
-  constructor(data) { ... }
+    constructor(data) { ... }
 }
 ```
 
+Set in the data passed to the constructor with the help of [setData](https://matreshka.io/#!Matreshka.Object-setData) method or, as we always do, set the data via ``super`` call.
+
+```js
+super(data);
+```
+
+Next, wait for ``"render"`` event which only fires out when the corresponding HTML element has been created but it hasn’t been inserted into the page yet. Bind the relevant properties to the corresponding HTML elements in the handler. When the property value is changed, ``innerHTML`` of the set element will be changed as well.
+
+```js
+this.on('render', () => {
+    this.bindNode({
+        name: ':sandbox .name',
+        email: ':sandbox .email',
+        phone: ':sandbox .phone'
+    }, Matreshka.binders.html());
+});
+```
+
+There is also an option to listen for ``"render"`` event via creating a special method for a model called ``onRender`` (check out [the doc](https://matreshka.io/#!Matreshka.Array-onItemRender)) but for demonstrational purposes let's simply use [on method](https://matreshka.io/#!Matreshka-on) call.
+
+In the end, create the instance of ``Users`` class, having passed the data as an argument.
+
+```js
+const users = new Users(data);
+```
+
+That’s it. On page reloading you will see a table with the list of users.
+
+[Demo](https://matreshkajs.github.io/examples/hello-world-array/)
+
+Now open the dev console and type:
+```js
+users.push({
+  name: "Gene L. Bailey",
+  email: "bailey@rhyta.com",
+  phone: "562–657–0985"
+});
+```
+
+As you see, a new element has been added to the table. And now call:
+```js
+users.reverse();
+```
+
+or any other array method (``sort``, ``splice``, ``pop``...). Besides its own methods, ``Matreshka.Array`` contains all the methods of a JavaScript array without any exception. Then,
+
+```js
+users[0].name = "Vasily Pupkin";
+users[1].email = "mail@example.com";
+```
+
+As you see, you don’t have to watch changes in the collection manually, the framework catches data changes and alters DOM by itself. It’s incredibly convenient.
+
+Remember, ``Matreshka.Array`` supports its own set of events. You can catch any change in the collection: adding, deleting, re-sorting of elements with the help of [on method](https://matreshka.io/#!Matreshka-on).
+
+```js
+users.on("addone", evt => {
+    console.log(evt.addedItem.name);
+});
+users.push({
+    name: "Clint A. Barnes"
+});
+```
+
+(it will print the name of the added user in the console)
+
+-------------------------------
+
+
+There are many ways to make such application you don't actually need to define a model class if it does not contain any serious logic. There is an example of the same application but using only one class:
+
+```js
+class Users extends Matreshka.Array {
+    get itemRenderer() {
+        return '#user_template';
+    }
+    constructor(data) {
+        super(...data)
+            .bindNode('sandbox', '.users')
+            .bindNode('container', ':sandbox tbody')
+            .rerender();
+    }
+    onItemRender(item) {
+        // item is simple object so we're going to use
+        // a static version of bindNode
+        Matreshka.bindNode(item, {
+            name: ':sandbox .name',
+            email: ':sandbox .email',
+            phone: ':sandbox .phone'
+        }, Matreshka.binders.html());
+    }
+}
+```
 **... coming soon**
