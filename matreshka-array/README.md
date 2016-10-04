@@ -1,8 +1,8 @@
-# Simple ``Matreshka.Array`` class example
+# ``Matreshka.Array`` class example
 
 ![](assets/table-screenshot.png)
 
-This example explains a purpose of [Matreshka.Array](https://matreshka.io/#!Matreshka.Array). Before reading you need to be familiar with ``Matreshka.Object``. A short tutorial [lives there](https://github.com/matreshkajs/examples/tree/master/matreshka-object).
+This example explains a purpose of [Matreshka.Array](https://matreshka.io/#!Matreshka.Array). Before reading you need to be familiar with ``Matreshka.Object``. A short tutorial about the usage of ``Matreshka.Object``  [lives there](https://github.com/matreshkajs/examples/tree/master/matreshka-object).
 
 Let’s say the task is to display the list of some people as a table. So as not to make the example more complicated, let’s place the prepared data into ``data`` variable.
 
@@ -90,7 +90,7 @@ While creating the instance class:
 
 - ``sandbox`` property is bound to ``.users`` element creating a sandbox (class boundary effect on HTML).
 - ``container`` property is bound to ``:sandbox tbody`` element determining HTML node where the rendered array items will be inserted into.
-- add the passed data to the array with the help of [recreate](https://matreshka.io/#!Matreshka.Array-recreate) method.
+- Add the passed data to the array with the help of [recreate](https://matreshka.io/#!Matreshka.Array-recreate) method.
 
 That's good enough. But we're going to use all the awesomeness of ECMASCript 2015 and we're going to use ``super`` call to fill the collection with passed data.
 
@@ -105,7 +105,6 @@ constructor(data) {
 - Add new items to the collecton via ``super`` call (which does the same as ``Matreshka.Array.apply(this, data)`` would do).
 - ``sandbox`` property is bound to ``.users`` element creating a sandbox.
 - ``container`` property is bound to ``:sandbox tbody`` element.
-- add the passed data to the array with the help of [recreate](https://matreshka.io/#!Matreshka.Array-recreate) method.
 - Call [rerender](https://matreshka.io/#!Matreshka.Array-rerender) method to render the collection (since we've bound ``container`` later than added new items).
 
 Now declare a "model". ``User`` class is inherited from the familiar ``Matreshka.Object``.
@@ -134,7 +133,7 @@ this.on('render', () => {
 });
 ```
 
-There is also an option to listen for ``"render"`` event via creating a special method for a model called ``onRender`` (check out [the doc](https://matreshka.io/#!Matreshka.Array-onItemRender)) but for demonstrational purposes let's simply use [on method](https://matreshka.io/#!Matreshka-on) call.
+There is also an option to listen for ``"render"`` event via creating a special virtual method for a model called ``onRender`` (check out [the doc](https://matreshka.io/#!Matreshka.Array-onItemRender)) but for demonstrational purposes let's simply use [on method](https://matreshka.io/#!Matreshka-on) call.
 
 In the end, create the instance of ``Users`` class, having passed the data as an argument.
 
@@ -144,7 +143,7 @@ const users = new Users(data);
 
 That’s it. On page reloading you will see a table with the list of users.
 
-[Demo](https://matreshkajs.github.io/examples/hello-world-array/)
+[**Demo**](https://matreshkajs.github.io/examples/hello-world-array/)
 
 Now open the dev console and type:
 ```js
@@ -184,8 +183,19 @@ users.push({
 
 -------------------------------
 
+As it's said at [the documentation for itemRenderer](https://matreshka.io/#!Matreshka.Array-itemRenderer) you're able to define the item renderer on ``Model`` class level. This is the answer on a frequently asked question "why should I declare a renderer on the collection level". Instead of using ``itemRenderer`` you can define ``renderer`` property for the ``Model`` class.
 
-There are many ways to make such application you don't actually need to define a model class if it does not contain any serious logic. There is an example of the same application but using only one class:
+```js
+class User extends Matreshka.Object {
+    get renderer() {
+        return '#user_template';
+    }
+    constructor(data) { ... }
+}
+```
+
+
+There are more ways to make such application: you don't actually have to define a model class if it does not contain any serious logic. There is an example of the same application but using only single class:
 
 ```js
 class Users extends Matreshka.Array {
@@ -206,6 +216,27 @@ class Users extends Matreshka.Array {
             email: ':sandbox .email',
             phone: ':sandbox .phone'
         }, Matreshka.binders.html());
+    }
+}
+```
+
+Also you can use [a bindings parser](https://matreshka.io/#!Matreshka-parseBindings) and declare the item renderer inside the class and don't add any dynamic logic to HTML code.
+
+```js
+class Users extends Matreshka.Array {
+    get itemRenderer() {
+        return `
+        <tr>
+          <td class="name">{{name}}</td>
+          <td class="email">{{email}}</td>
+          <td class="phone">{{phone}}</td>
+        </tr>`;
+    }
+    constructor(data) {
+        super(...data)
+            .bindNode('sandbox', '.users')
+            .bindNode('container', ':sandbox tbody')
+            .rerender();
     }
 }
 ```
