@@ -5,10 +5,10 @@ The article explains events in Matreshka.js framework. They can be called a hear
 ## Basics
 ### Custom events
 
-Let’s start with the simplest thing. In Matreshka events can be added with the help of [on](http://matreshka.io/#!Matreshka-on) method.
+Let’s start with the simplest thing. In Matreshka.js events can be added with the help of [on](http://matreshka.io/#!Matreshka-on) method.
 
 ```js
-var handler = function() {
+const handler = () => {
   alert('"someeevent" is fired');
 };
 this.on('someevent', handler);
@@ -20,11 +20,11 @@ Where the list of events separated by spaces can be passed to.
 this.on('someevent1 someevent2', handler);
 ```
 
-Static [MK.on](http://matreshka.io/#!Matreshka.on) method is used to declare an event handler for a custom object (which is or is not Matreshka instance) (the difference is only that the target object is the first argument but not ``this``).
+Static [Matreshka.on](http://matreshka.io/#!Matreshka.on) method is used to declare an event handler for a custom object (which is or is not ``Matreshka`` instance) (the difference is only that the target object is the first argument but not ``this``).
 
 ```js
-var object = {};
-MK.on(object, 'someevent', handler);
+const object = {};
+Matreshka.on(object, 'someevent', handler);
 ```
 
 Events can be fired with [trigger](http://matreshka.io/#!Matreshka-trigger) method.
@@ -36,14 +36,13 @@ this.trigger('someevent');
 Use the [static alternative of the method](http://matreshka.io/#!Matreshka.trigger) for custom objects.
 
 ```js
-MK.trigger(object, 'someevent');
+Matreshka.trigger(object, 'someevent');
 ```
 
 At the same time, you can pass some data to the handler having determined the first and the following arguments.
 
-
 ```js
-this.on('someevent', function(a, b, c) {
+this.on('someevent', (a, b, c) => {
   alert([a, b, c]); // 1,2,3
 });
 this.trigger('someevent', 1, 2, 3);
@@ -52,34 +51,34 @@ this.trigger('someevent', 1, 2, 3);
 Or
 
 ```js
-MK.on(object, 'someevent', function(a, b, c) {
+Matreshka.on(object, 'someevent', (a, b, c) => {
   alert([a, b, c]); // 1, 2, 3
 });
-MK.trigger(object, 'someevent', 1, 2, 3);
+Matreshka.trigger(object, 'someevent', 1, 2, 3);
 ```
 
-You can notice Backbone syntax here. That’s right: the first lines of Matreshka’s code were being written under the (negative) impression of Backbone (even the code has originally been borrowed from it, though it has undergone substantial transformation later).
+You can notice Backbone syntax here. That’s right: the first lines of Matreshka’s code were being written under the impression of Backbone (even the code has originally been borrowed from it, though it has undergone substantial transformation later).
 
-Hereafter, in this post, I will show alternative methods which use ``this`` key-word (except the examples of delegated events). Just remember that [on](http://matreshka.io/#!Matreshka.on), [once](http://matreshka.io/#!Matreshka.once), [onDebounce](http://matreshka.io/#!Matreshka.onDebounce), [trigger](http://matreshka.io/#!Matreshka.trigger), [set](http://matreshka.io/#!Matreshka.set), [bindNode](http://matreshka.io/#!Matreshka.bindNode) and other Matreshka’s methods have got static alternatives which accept a custom target object as the first argument.
+Hereafter, in this post, I will show alternative methods which use ``this`` key-word (except the examples of delegated events). Just remember that [on](http://matreshka.io/#!Matreshka.on), [once](http://matreshka.io/#!Matreshka.once), [onDebounce](http://matreshka.io/#!Matreshka.onDebounce), [trigger](http://matreshka.io/#!Matreshka.trigger), [set](http://matreshka.io/#!Matreshka.set), [bindNode](http://matreshka.io/#!Matreshka.bindNode) and other methods of Matreshka.js have got static alternatives which accept a custom target object as the first argument.
 
 Besides ``on`` method, there are two more: [once](http://matreshka.io/#!Matreshka.once) and [onDebounce](http://matreshka.io/#!Matreshka.onDebounce). The first one adds a handler that can be called only once.
 
 ```js
-this.once('someevent', function() {
-  alert('yep');
+this.once('someevent', () => {
+    alert('yep');
 });
 this.trigger('someevent'); // yep
 this.trigger('someevent'); // nothing
 ```
 
-The second one "debounces" the handler. When an event fires out, the timer with the specified delay by a programmer starts. If no event with the same name is called upon the expiry of the timer, a handler is called. If an event fires before the delay is over, the timer updates and waits again. This is the implementation of a very popular "debounce" micropattern which you can read about on [this page](http://davidwalsh.name/javascript-debounce-function) or [on Matreshka website](http://matreshka.io/#!Matreshka.debounce).
+The second one "debounces" the handler. When an event fires out, the timer with the specified delay by a programmer starts. If no event with the same name is called upon the expiry of the timer, a handler is called. If an event fires before the delay is over, the timer updates and waits again. This is the implementation of a very popular "debounce" micropattern which you can read about on [this page](http://davidwalsh.name/javascript-debounce-function) or [on the website](http://matreshka.io/#!Matreshka.debounce).
 
 
 ```js
-this.onDebounce('someevent', function() {
+this.onDebounce('someevent', () => {
   alert('yep');
 });
-for(var i = 0; i < 1000; i++) {
+for(let i = 0; i < 1000; i++) {
   this.trigger('someevent');
 }
 // it will show ‘yep’ once in a very short space of time
@@ -91,13 +90,13 @@ Remember the method can accept a delay.
 this.onDebounce('someevent', handler, 1000);
 ```
 
-## Events of property changing
+### Events of property changing
 
-When a property is changed, Matreshka fires an event: ``"change:KEY"``.
+When a property is changed, Matreshka.js fires an event: ``"change:KEY"``.
 
 ```js
-this.on('change:x', function() {
-  alert('x is changed');
+this.on('change:x', () => {
+    alert('x is changed');
 });
 this.x = 42;
 ```
@@ -105,69 +104,76 @@ this.x = 42;
 In case you want to pass some data to the event handler or change a property value without calling ``"change:KEY"`` event, instead of a usual assignment use [Matreshka#set](http://matreshka.io/#!Matreshka-set) method (or static [Matreshka.set](http://matreshka.io/#!Matreshka.set) method) which accepts three arguments: a key, a value and an object with data or special flags.
 
 ```js
-this.on('change:x', function(evt) {
-  alert(evt.someData);
+this.on('change:x', evt => {
+    alert(evt.someData);
 });
-this.set('x', 42, {someData: 'foo'});
+this.set('x', 42, { someData: 'foo' });
 ```
 
 You can change a property without calling an event handler in this way:
 
 ```js
 // changing doesn’t fire an event
-this.set('x', 9000, {silent: true});
+this.set('x', 9000, { silent: true });
 ```
 
 ``set`` method supports some more flags, the description of which would make us go beyond the theme of the article, so I refer you to the [documentation of the method](http://matreshka.io/#!Matreshka-set).
 
-## Events which are being fired before a property changing
-In 1.1 version another event: ``"beforechange:KEY"`` has appeared which is being fired before a property changing. The event can be useful in cases you define ``"change:KEY"`` event and want to call the code which precedes this event.
+### Events which are being fired before a property changing
+
+In 1.1 version another event: ``"beforechange:KEY"`` has added which is being fired before a property changing. The event can be useful in cases you define ``"change:KEY"`` event and want to call the code which precedes this event.
 
 ```js
-this.on('beforechange:x', funtion() {
-  alert('x will be changed in few microseconds');
+this.on('beforechange:x', () => {
+    alert('x will be changed in few microseconds');
 });
 ```
 
 You can pass some data to the handler or cancel an event triggering.
 
 ```js
-this.on('beforechange:x', function(evt) {
-  alert(evt.someData);
+this.on('beforechange:x', evt => {
+    alert(evt.someData);
 });
-this.set('x', 42, {someData: 'foo'});
+
+this.set('x', 42, { someData: 'foo' });
+
 // changing doesn’t fire an event
-this.set('x', 9000, {silent: true});
+this.set('x', 9000, { silent: true });
 ```
 
-## Events of a property removing
+### Events of a property removing
 
 On removing properties with [remove](http://matreshka.io/#!Matreshka-remove) method, ``"delete:KEY"`` and ``delete`` events are fired.
 
 ```js
-this.on('delete:x', function() {
-  alert('x is deleted');
+this.on('delete:x', () => {
+    alert('x is deleted');
 });
-this.on('delete', function(evt) {
+
+this.on('delete', evt => {
   alert(evt.key + ' is deleted');
 });
+
 this.remove('x');
 ```
 
-## Binding events
+### Binding events
 On the binding declaration two events: ``"bind"`` and ``"bind:KEY"`` are fired, where ``KEY`` is a key of a bound property.
 
 ```js
-this.on('bind:x', function() {
-  alert('x is bound');
+this.on('bind:x', () => {
+    alert('x is bound');
 });
-this.on('bind', function(evt) {
-  alert(evt.key + ' is bound');
+
+this.on('bind', evt => {
+    alert(`${evt.key} is bound`);
 });
+
 this.bindNode('x', '.my-node');
 ```
 
-This event can be of use, for example, when another class controls bindings and you need to launch your code after some binding (for instance, sandbox binding).
+This event can be of use, for example, when another class controls bindings and you need to execute your code after some binding (for instance, sandbox binding).
 
 
 ## The events of event adding/removing
@@ -183,51 +189,47 @@ this.on('removeevent', handler);
 this.on('removeevent:someevent', handler);
 ```
 
-Originally, ``"addevent:NAME"`` event was implemented for inner optimizations, but then it was decided to put it into the public API.
-
-One of the ways of its application can be the use of Matreshka and the event engine of the third-party library together. Let’s say, you want to place all handlers for the class only in one [on](http://matreshka.io/#!Matreshka-on%282%29) call, having made the code more readable and compact. With the help of ``addevent`` you catch all the following event initializations, and in the handler you check an event name against some conditions and initialize an event using API of the third-party library. In the example below there’s a code from a project written in ECMAScript 2015, which uses Fabric.js. ``"addevent"`` handler checks an event name for the presence of ``"fabric:"`` prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.
+One of the ways of its application can be the use of Matreshka and the event engine of the third-party library together. Let’s say, you want to place all handlers for the class only in one [on](http://matreshka.io/#!Matreshka-on%282%29) call, having made the code more readable and compact. With the help of ``addevent`` you catch all the following event initializations, and in the handler you check an event name against some conditions and initialize an event using API of the third-party library. In the example below there’s a code from a project which uses Fabric.js. ``"addevent"`` handler checks an event name for the presence of ``"fabric:"`` prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.
 
 ```js
 this.canvas = new fabric.Canvas(node);
 this.on({
-  'addevent': evt => {
-    let {name, callback} = evt,
-        prefix = 'fabric:';
-    if(name.indexOf(prefix) == 0) {
-      name = name.slice(prefix.length);
-      // add an event to the canvas
-      this.canvas.on(name, callback);
-    }
-  },
-  'fabric:after:render': evt => this.data = this.canvas.toObject(),
-  'fabric:object:selected': evt => …
-}
+    'addevent': evt => {
+        const { name, callback } = evt;
+        const prefix = 'fabric:';
+        if(name.indexOf(prefix) == 0) {
+            const fabricEventName = name.slice(prefix.length);
+            // add an event to the canvas
+            this.canvas.on(fabricEventName, callback);
+        }
+    },
+    'fabric:after:render': evt => {
+        this.data = this.canvas.toObject();
+    },
+    'fabric:object:selected': evt => { /* ... */ }
+});
 ```
 
-## Hidden events
+## Delegated events
 
-For the sake of completeness, it should be mentioned that Matreshka’s core also uses events for implementing cool features. On property changing, for example, two events are fired: ``"_runbindings:KEY"`` which calls the mechanism of synchronization with DOM element and ``"_rundependencies:KEY"`` which calls [linkProps mechanism](http://matreshka.io/#!Matreshka-linkProps).
+Now let’s get down to the most interesting: event delegations. The syntax of delegated events is as follows: ``"PATH@EVENT_NAME"``, where ``PATH ``is the way (properties are separated by a dot) to the object which ``EVENT_NAME`` event needs to be added to. Let’s consider examples below.
 
-# Delegated events
-
-Now let’s get down to the most interesting: event delegations. The syntax of delegated events is as follows: ``"PATH@EVENT_NAME"``, where ``PATH ``is the way (properties are separated by a dot) to the object which ``EVENT_NAME`` event needs to be added to. Let’s consider the examples.
-
-## Example 1
+### Example 1
 You want to add an event handler in ``"a"`` property which is an object.
 ```js
 this.on('a@someevent', handler);
 ```
 
-The handler will be called only when ``"someevent"`` event has fired in the ``"a"`` object.
+The handler will be called when ``"someevent"`` event has fired in the ``"a"`` object.
 
 ```js
 // if a is an instance of Matreshka
 this.a.trigger('someevent');
 // if a is an ordinary object or an instance of Matreshka
-MK.trigger(this.a, 'someevent');
+Matreshka.trigger(this.a, 'someevent');
 ```
 
-Also, the handler can be declared before ``"a"`` property is declared. If ``"a"`` property is rewritten into another object, Matreshka’s inner mechanism will catch this change, remove the handler from the previous property value and add it to a new value (if the new value is an object as well).
+Also, the handler can be declared before ``"a"`` property is declared. If ``"a"`` property is rewritten into another object, inner mechanism of the framework will catch this change, remove the handler from the previous property value and add it to a new value (if the new value is an object as well).
 
 ```js
 this.a = new MK();
@@ -239,58 +241,58 @@ MK.trigger(this.a, 'someevent');
 
 The handler will be called again.
 
-## Example 2
+### Example 2
 
-What if our object is a collection inherited from [Matreshka.Array](http://matreshka.io/#!Matreshka.Array) or [Matreshka.Object](http://matreshka.io/#!Matreshka.Object) (``MK.Object`` is a collection of a key-value type , instances of this class have [each](http://matreshka.io/#!Matreshka.Object-each) method which iterates over all properties responsible for data and a support of [for..of](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/for...of) cycles)? We don’t know beforehand in which item of the collection an event will be fired (in the first or in the tenth one). That’s why, instead of a property name for these classes we can use an asterisk "*" meaning that an event handler must be called only when an event is fired upon one of the elements included into the collection.
+What if our object is a collection inherited from [Matreshka.Array](http://matreshka.io/#!Matreshka.Array) or [Matreshka.Object](http://matreshka.io/#!Matreshka.Object) (``Matreshka.Object`` is a collection of a key-value type)? We don’t know beforehand in which item of the collection an event will be fired (in the first or in the tenth one). That’s why, instead of a property name for these classes we can use an asterisk ``*`` meaning that an event handler must be called only when an event is fired upon one of the elements included into the collection.
 
 ```js
 this.on('*@someevent', handler);
 ```
-If the included element is an instance of Matreshka:
+If the included element is an instance of ``Matreshka``:
 
 ```js
 this.push(new Matreshka());
 this[0].trigger('someevent');
 ```
 
-Or, in case the included element is an ordinary object or an instance of Matreshka:
+Or, in case the included element is an ordinary object or an instance of ``Matreshka``:
 
 ```js
 this.push({});
-MK.trigger(this[0], 'someevent');
+Matreshka.trigger(this[0], 'someevent');
 ```
 
-## Example 3
+### Example 3
 Let’s go deeper. Suppose we have ``"a"`` property that contains an object with ``"b"`` property, in which ``"someevent"`` event must be fired. In this case properties are separated by a dot:
 
 ```js
 this.on('a.b@someevent', handler);
 this.a.b.trigger('someevent');
 //or
-MK.trigger(this.a.b, 'someevent');
+Matreshka.trigger(this.a.b, 'someevent');
 ```
 
-## Example 4
+### Example 4
 We have ``"a"`` property which is a collection. We want to listen to ``"someevent"`` event that must be fired in some element included in this collection. Combine examples (2) and (3).
 
 ```js
 this.on('a.*@someevent', handler);
 this.a[0].trigger('someevent');
 //or
-MK.trigger(this.a[0], 'someevent');
+Matreshka.trigger(this.a[0], 'someevent');
 ```
 
-## Example 5
+### Example 5
 We have a collection containing objects with ``"a"`` property which is an object. We want to add a handler to all objects we have with ``"a"`` key in each element of the collection:
 
 ```js
 this.on('*.a@someevent', handler);
 this[0].a.trigger('someevent');
 //or
-MK.trigger(this[0].a, 'someevent');
+Matreshka.trigger(this[0].a, 'someevent');
 ```
 
-## Example 6
+### Example 6
 
 ![](https://cdn-images-1.medium.com/max/800/0*14YRlzm6qlo9sfkv.)
 
@@ -300,12 +302,12 @@ We have a collection which items have ``"a"`` property that is a collection. In 
 this.on('*.a.*.b@someevent', handler);
 this[0].a[0].b.trigger('someevent');
 //or
-MK.trigger(this[0].a[0].b, 'someevent');
+Matreshka.trigger(this[0].a[0].b, 'someevent');
 ```
 
-## Example 7. Various combinations
+### Example 7. Various combinations
 
-Besides custom events, you can use the ones which are built in Matreshka as well. Instead of ``"someevent"`` you can use ``"change:KEY"`` event described above or ``"modify"`` which allows to listen to any changes in ``MK.Object`` or ``MK.Array``.
+Besides custom events, you can use the ones which are built in Matreshka.js as well. Instead of ``"someevent"`` you can use ``"change:KEY"`` event described above or ``"modify"`` which allows to listen to any changes in ``Matreshka.Object`` or ``Matreshka.Array``.
 
 ```js
 // in “a” object there’s “b” object,
@@ -321,48 +323,48 @@ Let me remind you that delegated events are added dynamically. On declaring a ha
 
 ```js
 this.on('a.b.c.d@someevent', handler);
-this.a.b = {c: {d: {}}};
-MK.trigger(this.a.b.c.d, 'someevent');
+this.a.b = { c: { d: {} } };
+Matreshka.trigger(this.a.b.c.d, 'someevent');
 ```
 
-# DOM events
+## DOM events
 
-Matreshka is known to allow the binding of DOM element on the page to some Matreshka’s instance property or an ordinary object implementing one-way or two-way data binding:
+Matreshka.js is known to allow the binding of DOM element on the page to some Matreshka’s instance property or an ordinary object implementing one-way or two-way data binding:
 
 ```js
 this.bindNode('x', '.my-node');
 //or
-MK.bindNode(object, 'x', '.my-node');
+Matreshka.bindNode(object, 'x', '.my-node');
 ```
 
-[More detailed information about bindNode method](http://matreshka.io/#!Matreshka-bindNode).
+[More detailed information about bindNode method](https://matreshka.io/#!Matreshka-bindNode).
 
-Before or after the declaration of the binding you can create a handler that listens to DOM events of the bound element. The syntax is as follows: ``"DOM_EVENT::KEY"``, where ``DOM_EVENT`` is DOM or jQuery event, and ``KEY`` is a key of a bound property. ``DOM_EVENT`` and ``KEY`` are separated by a double colon.
+Before or after the declaration of the binding you can create a handler that listens to DOM events of the bound element. The syntax is as follows: ``"DOM_EVENT::KEY"``, where ``DOM_EVENT`` is DOM or jQuery event (if jQuery is used), and ``KEY`` is a key of a bound property. ``DOM_EVENT`` and ``KEY`` are separated by a double colon.
 
 ```js
-this.on('click::x', function(evt) {
+this.on('click::x', evt => {
   evt.preventDefault();
 });
 ```
 
-The object of original DOM event is under ``"domEvent"`` key of the event object passed to the handler. Besides, there are several properties and methods available in the object so as not to address ``"domEvent"`` every time: ``"preventDefault"``, ``"stopPropagation"``, ``"which"``, ``"target"`` and some other properties (``"key"``, ``"node"``, ``"$nodes"``, ``"self"``).
+The object of original DOM event is under ``"domEvent"`` key of the event object passed to the handler. Besides, there are several properties and methods available in the object so as not to address ``"domEvent"`` every time: ``"preventDefault"``, ``"stopPropagation"``, ``"which"``, ``"target"`` and some other properties.
 
 This opportunity is syntactic sugar over ordinary DOM and jQuery events and the code below does the same things as the previous one:
 
 ```js
-$('.my-node').on('click', function(evt) {
-  evt.preventDefault();
+document.querySelector('.my-node').addEventListener('click', evt => {
+    evt.preventDefault();
 });
 ```
 
-## Delegated DOM events
+### Delegated DOM events
 
 Event declaring from the example above requires binding declaring. You must take two steps: call ``bindNode`` method and declare the event as such. It isn’t always convenient because there are often some cases when DOM node isn’t used anywhere except the only DOM event. For this case there is another syntax variant of DOM events which looks like ``"DOM_EVENT::KEY(SELECTOR)"``. In this case ``KEY`` is some key bound to some DOM node. And ``SELECTOR`` is a selector of DOM node that is included into the one bound to ``KEY``.
 
 HTML:
 ```html
 <div class="my-node">
- <span class="my-inner-node"></span>
+    <span class="my-inner-node"></span>
 </div>
 ```
 JS:
@@ -371,11 +373,11 @@ this.bindNode('x', '.my-node');
 this.on('click::x(.my-inner-node)', handler);
 ```
 
-## Delegated DOM events inside a sandbox
+### Delegated DOM events inside a sandbox
 
 If we need to create a handler for some element included into a sandbox, a little simplified ``"DOM_EVENT::(SELECTOR)"`` syntax is used.
 
-Let me remind you that a sandbox limits the influence of Matreshka’s instance or a custom object to one element in your web application. For example, if there are several widgets on the page and each widget is driven by its class, it’s highly recommended to set a sandbox for each class referring to the root element of the widget which this class has influence on.
+Let me remind you that a sandbox limits the influence of ``Matreshka`` instance or a custom object to one element in your web application. For example, if there are several widgets on the page and each widget is driven by its class, it’s highly recommended to set a sandbox for each class referring to the root element of the widget which this class has influence on.
 
 ```js
 this.bindNode('sandbox', '.my-node');
@@ -388,11 +390,23 @@ This code does absolutely the same thing:
 this.on('click::sandbox(.my-inner-node)', handler);
 ```
 
-# Events of Matreshka.Object class
+## Events of Matreshka.Object class
 
-Remember ``MK.Object`` is a class that is responsible for data of a key-value type. Besides, it can be used as a model in [MK.Array](http://matreshka.io/#!Matreshka.Array) class (as well as ``MK.Array`` which allows to create collections of collections). You can read more about this class [in documentation](http://ru.matreshka.io/#!Matreshka.Object).
+Remember ``Matreshka.Object`` is a class that is responsible for data of a key-value type. You can read more about this class [in documentation](http://ru.matreshka.io/#!Matreshka.Object).
 
-On every changing of properties which are responsible for data, ``"modify"`` event is fired.
+On every changing of properties which are responsible for data, ``"set"`` event is fired.
+
+```js
+this.on('set', handler);
+```
+
+On every removal of properties which are responsible for data, ``"remove"`` event is fired.
+
+```js
+this.on('remove', handler);
+```
+
+And on any modifying changes (property changes and deletions) ``"modify"`` event is fired.
 
 ```js
 this.on('modify', handler);
@@ -400,30 +414,27 @@ this.on('modify', handler);
 
 In this easy way you can listen to all data changing instead of a manual property listening.
 
-# Events of Matreshka.Array class
-Everything is much more interesting with an array. [MK.Array](http://matreshka.io/#!Matreshka.Array) includes lots of useful events which give an opportunity to find out what has happened in the collection: an item insertion, an item removing, resorting, which method has been called...
+## Events of Matreshka.Array class
 
-Let me remind you that ``MK.Array`` is a class which is responsible for the implementation of collections in Matreshka framework. The class completely duplicates the methods of built-in [Array.prototype](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype), and a programmer doesn’t have to think which method to call in order to add or remove something. The information you should know about ``MK.Array`` events:
+Everything is much more interesting with an array. [Matreshka.Array](http://matreshka.io/#!Matreshka.Array) includes lots of useful events which give an opportunity to find out what has happened in the collection: an item insertion, an item removing, resorting, which method has been called...
 
-- On calling the methods which have been borrowed from ``Array.prototype``, the corresponding event (``"push"``, ``"splice"``, ``"pop"``...) is fired
-- On inserting items into the array, ``"add"`` and ``"addone"`` events are fired. Using the first one, an array of inserted items gets to ``"added"`` property of an event object. Using the second one, one inserted item gets to ``"added"`` property, and the event is fired so many times according to how many items have been added.
-- On removing items the same logic is used: ``"remove"`` is fired passing an array of removed items to ``"removed"`` property of an event object, and ``"removeone"`` is fired on each removed item, passing one removed element to property ``"removed"``.
+Let me remind you that ``Matreshka.Array`` is a class which is responsible for the implementation of collections in Matreshka.js framework. The class completely duplicates the methods of built-in [Array.prototype](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype), and a programmer doesn’t have to think which method to call in order to add or remove something. The information you should know about ``Matreshka.Array`` events:
+
+- On calling modifying methods which have been borrowed from ``Array.prototype``, the corresponding event (``"push"``, ``"splice"``, ``"pop"``...) is fired
+- On inserting items into the array, ``"add"`` and ``"addone"`` events are fired. Using the first one, an array of inserted items gets to ``"added"`` property of an event object. Using the second one, one inserted item gets to ``"addedItem"`` property, and the event is fired so many times according to how many items have been added.
+- On removing items the same logic is used: ``"remove"`` is fired passing an array of removed items to ``"removed"`` property of an event object, and ``"removeone"`` is fired on each removed item, passing one removed element to property ``"removedItem"``.
 - On any modifications of collection, ``"modify"`` event is fired. I. е. to catch ``"remove"`` and ``"add"`` events separately isn’t obligatory.
 
 Some examples from the documentation:
 
 ```js
-this.on('push', function(evt) {
-  console.log(evt.args); // [1,2,3]
-});
-
 this.on('add', function(evt) {
-  console.log(evt.added); // [1,2,3]
+    console.log(evt.added); // [1,2,3]
 });
 // the handler will launch thrice,
 // as three new elements have been added to the array
 this.on('addone', function(evt) {
-  console.log(evt.added); // 1 … 2 … 3
+  console.log(evt.addedItem); // 1 … 2 … 3
 });
 this.push(1, 2, 3);
 ```
