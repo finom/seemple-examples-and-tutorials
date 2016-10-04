@@ -3,7 +3,7 @@
 	"embed": [{
 		"type": "htmlpage",
 		"label": "Result",
-		"url": "//matreshkajs.github.io/examples/soundcloud-search/"
+		"url": "//matreshkajs.github.io/examples-and-tutorials/soundcloud-search/"
 	}, {
 		"type": "html",
 		"label": "index.html",

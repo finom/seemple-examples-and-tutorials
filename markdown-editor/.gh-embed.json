@@ -3,7 +3,7 @@
 	"embed": [{
 		"label": "Result",
 		"type": "htmlpage",
-		"url": "//matreshkajs.github.io/examples/markdowneditor/"
+		"url": "//matreshkajs.github.io/examples-and-tutorials/markdown-editor/"
 	}, {
 		"type": "html",
 		"label": "index.html",
