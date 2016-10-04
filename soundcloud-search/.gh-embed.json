@@ -7,18 +7,18 @@
 	}, {
 		"type": "html",
 		"label": "index.html",
-		"path": "soundcloud_search/index.html"
+		"path": "soundcloud-search/index.html"
 	}, {
 		"type": "js",
 		"label": "app.js",
-		"path": "soundcloud_search/js/app.js"
+		"path": "soundcloud-search/js/app.js"
 	}, {
 		"type": "js",
 		"label": "track.class.js",
-		"path": "soundcloud_search/js/track.class.js"
+		"path": "soundcloud-search/js/track.class.js"
 	}, {
 		"type": "js",
 		"label": "tracks.class.js",
-		"path": "soundcloud_search/js/tracks.class.js"
+		"path": "soundcloud-search/js/tracks.class.js"
 	}]
 }

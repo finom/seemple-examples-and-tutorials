@@ -6,18 +6,18 @@
 	}, {
 		"type": "html",
 		"label": "index.html",
-		"path": "contact_list/index.html"
+		"path": "contact-list/index.html"
 	}, {
 		"type": "js",
 		"label": "app.js",
-		"path": "contact_list/js/app.js"
+		"path": "contact-list/js/app.js"
 	}, {
 		"type": "js",
 		"label": "phone.js",
-		"path": "contact_list/js/phone.js"
+		"path": "contact-list/js/phone.js"
 	}, {
 		"type": "js",
 		"label": "phones.js",
-		"path": "contact_list/js/phones.js"
+		"path": "contact-list/js/phones.js"
 	}]
 }
