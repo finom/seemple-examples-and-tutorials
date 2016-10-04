@@ -209,7 +209,7 @@ class Users extends Matreshka.Array {
             .rerender();
     }
     onItemRender(item) {
-        // item is simple object so we're going to use
+        // item is a simple object so we're going to use
         // a static version of bindNode
         Matreshka.bindNode(item, {
             name: ':sandbox .name',
