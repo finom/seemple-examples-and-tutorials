@@ -4,15 +4,15 @@ This repo contains examples and important tutorials for Matreshka.js framework t
 
 I would recommend to start your journey from [Hello World](./hello-world), [Matreshka.Object example](./matreshka-object) and [Matreshka.Array example](./matreshka-array). Then read an article which explains one of the most important part of Matreshka.js framework: [events](./events).
 
-**Other examples**
+### Other examples
 - [Contact List](./contact-list)
 - [Markdown Editor](./markdown-editor)
 - [Treeview](./treeview)
 - [Soundcloud Search](./soundcloud-search)
 
-If you've noticed problems (eg live example doesn't work), feel free to report an issue or make pull-requests.
+If you've noticed problems (e. g. live example doesn't work), feel free to report an issue or make pull-requests.
 
-**External repos**
+### External repos
 - [TodoMVC](https://github.com/matreshkajs/todomvc)
 - [jscompress.com](https://github.com/circlecell/jscompress.com)
 
