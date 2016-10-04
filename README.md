@@ -2,7 +2,7 @@
 
 This repo contains examples and important tutorials for Matreshka.js framework to keep all additional teaching materials (besides [the main documentation](https://matreshka.io/)) at single place. All the JavaScript code is written using modern ECMAScript 2015 syntax and may not work at outdated browsers. To make such code work at older browsers you can use well known transpiler called [Babel](https://babeljs.io/).
 
-I would recommend to start your journey from [Hello World](./hello-world), [Matreshka.Object example](./matreshka-object) and [Matreshka.Array example](./matreshka-array). Then read an article which explains one of the most important part of Matreshka.js framework: [events](./events).
+I would recommend to start your journey from [Hello World](./hello-world), [Matreshka.Object example](./matreshka-object) and [Matreshka.Array example](./matreshka-array). Then read an article which explains one of the most important part of Matreshka.js framework: [the events](./events).
 
 ### Other examples
 - [Contact List](./contact-list)

@@ -1,4 +1,4 @@
-# Events
+# The events
 
 The article explains events in Matreshka.js framework. They can be called a heart of Matreshka.js because they power all the magic happened at ``calc``, ``bindNode``, ``instantiate`` and other methods.
 
