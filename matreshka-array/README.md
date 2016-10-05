@@ -44,7 +44,7 @@ class Users extends Matreshka.Array {
 }
 ```
 
-Set ``"itemRenderer"`` property which is responsible for the way the elements of the array will be rendered on the page.
+Define ``"itemRenderer"`` property which is responsible for the way the elements of the array will be rendered on the page.
 
 ```js
 get itemRenderer() {
@@ -92,7 +92,7 @@ While creating the instance class:
 - ``container`` property is bound to ``:sandbox tbody`` element determining HTML node where the rendered array items will be inserted into.
 - Add the passed data to the array with the help of [recreate](https://matreshka.io/#!Matreshka.Array-recreate) method.
 
-That's good enough. But we're going to use all the awesomeness of ECMASCript 2015 and we're going to use ``super`` call to fill the collection with passed data.
+That's good enough. But we're going to use all the awesomeness of ECMAScript 2015 and we're going to use ``super`` call to fill the collection with passed data.
 
 ```js
 constructor(data) {
@@ -143,7 +143,7 @@ const users = new Users(data);
 
 That’s it. On page reloading you will see a table with the list of users.
 
-[**Demo**](https://matreshkajs.github.io/examples-and-tutorials/hello-world-array/)
+[**Demo**](https://matreshkajs.github.io/examples-and-tutorials/matreshka-array/)
 
 Now open the dev console and type:
 ```js
