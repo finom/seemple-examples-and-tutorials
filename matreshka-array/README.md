@@ -2,7 +2,7 @@
 
 ![](assets/table-screenshot.png)
 
-This example explains a purpose of [Matreshka.Array](https://matreshka.io/#!Matreshka.Array). Before reading you need to be familiar with ``Matreshka.Object``. A short tutorial about the usage of ``Matreshka.Object``  [lives there](https://github.com/matreshkajs/examples/tree/master/matreshka-object).
+This example explains a purpose of [Matreshka.Array](https://matreshka.io/#!Matreshka.Array). Before reading you need to be familiar with ``Matreshka.Object``. A short tutorial about the usage of ``Matreshka.Object``  [lives there](https://github.com/matreshkajs/examples-and-tutorials/tree/master/matreshka-object).
 
 Let’s say the task is to display the list of some people as a table. So as not to make the example more complicated, let’s place the prepared data into ``data`` variable.
 
@@ -143,7 +143,7 @@ const users = new Users(data);
 
 That’s it. On page reloading you will see a table with the list of users.
 
-[**Demo**](https://matreshkajs.github.io/examples/hello-world-array/)
+[**Demo**](https://matreshkajs.github.io/examples-and-tutorials/hello-world-array/)
 
 Now open the dev console and type:
 ```js
