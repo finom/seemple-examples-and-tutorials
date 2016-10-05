@@ -220,7 +220,7 @@ class Users extends Matreshka.Array {
 }
 ```
 
-Also you can use [a bindings parser](https://matreshka.io/#!Matreshka-parseBindings) and declare the item renderer inside the class and don't add any dynamic logic to HTML code.
+Also you can use [a bindings parser](https://matreshka.io/#!Matreshka-parseBindings) which is turned on by default at ``Matreshka.Array`` class and declare the item renderer inside the class and don't define any templates at HTML code.
 
 ```js
 class Users extends Matreshka.Array {
@@ -236,7 +236,6 @@ class Users extends Matreshka.Array {
         super(...data)
             .bindNode('sandbox', '.users')
             .bindNode('container', ':sandbox tbody')
-            .rerender();
     }
 }
 ```
