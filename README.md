@@ -16,4 +16,4 @@ If you've noticed problems (e. g. live example doesn't work), feel free to repor
 - [TodoMVC](https://github.com/matreshkajs/todomvc)
 - [jscompress.com](https://github.com/circlecell/jscompress.com)
 
-(If you want to add a link to your repository, open an issue for a discussion)
+(If you want to add a link to your repository, feel free to open PR. After short discussion is most likely will be accepted)
