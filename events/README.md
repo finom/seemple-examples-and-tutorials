@@ -236,7 +236,7 @@ this.a = new Matreshka();
 this.a.trigger('someevent');
 //or
 this.a = {};
-MK.trigger(this.a, 'someevent');
+Matreshka.trigger(this.a, 'someevent');
 ```
 
 The handler will be called again.
@@ -439,4 +439,4 @@ this.on('addone', function(evt) {
 this.push(1, 2, 3);
 ```
 
-In order not to copy the whole documentation here, please refer to [MK.Array documentation](http://matreshka.io/#!Matreshka.Array) on your own.
+In order not to copy the whole documentation here, please refer to [Matreshka.Array documentation](http://matreshka.io/#!Matreshka.Array) on your own.
