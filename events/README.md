@@ -232,7 +232,7 @@ Matreshka.trigger(this.a, 'someevent');
 Also, the handler can be declared before ``"a"`` property is declared. If ``"a"`` property is rewritten into another object, inner mechanism of the framework will catch this change, remove the handler from the previous property value and add it to a new value (if the new value is an object as well).
 
 ```js
-this.a = new MK();
+this.a = new Matreshka();
 this.a.trigger('someevent');
 //or
 this.a = {};
