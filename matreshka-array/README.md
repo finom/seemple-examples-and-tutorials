@@ -4,7 +4,7 @@
 
 This example explains a purpose of [Matreshka.Array](https://matreshka.io/#!Matreshka.Array). Before reading you need to be familiar with ``Matreshka.Object``. A short tutorial about the usage of ``Matreshka.Object``  [lives there](https://github.com/matreshkajs/examples-and-tutorials/tree/master/matreshka-object).
 
-Let’s say the task is to display the list of some people as a table. So as not to make the example more complicated, let’s place the prepared data into ``data`` variable.
+Let’s say the task is to display a list of some people as a table. So as not to make the example more complicated, let’s place the prepared data into ``data`` variable.
 
 ```js
 // randomly generated names and phones
@@ -66,7 +66,7 @@ In this case, the selector, referring to a template in HTML code, has been given
 
 > ``itemRenderer`` property can get other values, including function or HTML string.
 
-And set the value of Model property, defining the class of elements which are contained in the collection.
+And set the value of ``Model`` property, defining the class of elements which are contained in the collection.
 
 ```js
 get Model() {
