@@ -57,7 +57,7 @@ Matreshka.on(object, 'someevent', (a, b, c) => {
 Matreshka.trigger(object, 'someevent', 1, 2, 3);
 ```
 
-You can notice Backbone syntax here. That’s right: the first lines of Matreshka’s code were being written under the impression of Backbone (even the code has originally been borrowed from it, though it has undergone substantial transformation later).
+You can notice Backbone syntax here. That’s right: the first lines of Matreshka.js code were being written under the impression of Backbone (even the code has originally been borrowed from it, though it has undergone substantial transformation later).
 
 Hereafter, in this post, I will show alternative methods which use ``this`` key-word (except the examples of delegated events). Just remember that [on](http://matreshka.io/#!Matreshka.on), [once](http://matreshka.io/#!Matreshka.once), [onDebounce](http://matreshka.io/#!Matreshka.onDebounce), [trigger](http://matreshka.io/#!Matreshka.trigger), [set](http://matreshka.io/#!Matreshka.set), [bindNode](http://matreshka.io/#!Matreshka.bindNode) and other methods of Matreshka.js have got static alternatives which accept a custom target object as the first argument.
 
@@ -71,7 +71,7 @@ this.trigger('someevent'); // yep
 this.trigger('someevent'); // nothing
 ```
 
-The second one "debounces" the handler. When an event fires out, the timer with the specified delay by a programmer starts. If no event with the same name is called upon the expiry of the timer, a handler is called. If an event fires before the delay is over, the timer updates and waits again. This is the implementation of a very popular "debounce" micropattern which you can read about on [this page](http://davidwalsh.name/javascript-debounce-function) or [on the website](http://matreshka.io/#!Matreshka.debounce).
+The second one "debounces" the handler. When an event fires out, the timer with the specified delay by a programmer starts. If no event with the same name is called upon the expiry of the timer, a handler is called. If an event fires before the delay is over, the timer updates and waits again. This is the implementation of a very popular "debounce" micropattern which you can read about on [this page](http://davidwalsh.name/javascript-debounce-function).
 
 
 ```js
@@ -117,11 +117,11 @@ You can change a property without calling an event handler in this way:
 this.set('x', 9000, { silent: true });
 ```
 
-``set`` method supports some more flags, the description of which would make us go beyond the theme of the article, so I refer you to the [documentation of the method](http://matreshka.io/#!Matreshka-set).
+``set`` method supports some more flags, the description of which would make us go beyond the topic of the article, so I refer you to the [documentation of the method](http://matreshka.io/#!Matreshka-set).
 
 ### Events which are being fired before a property changing
 
-In 1.1 version another event: ``"beforechange:KEY"`` has added which is being fired before a property changing. The event can be useful in cases you define ``"change:KEY"`` event and want to call the code which precedes this event.
+``"beforechange:KEY"`` is being fired before a property changing. The event can be useful in cases you define ``"change:KEY"`` event and want to call the code which precedes this event.
 
 ```js
 this.on('beforechange:x', () => {
@@ -152,7 +152,7 @@ this.on('delete:x', () => {
 });
 
 this.on('delete', evt => {
-  alert(evt.key + ' is deleted');
+  alert(`${evt.key} is deleted`);
 });
 
 this.remove('x');
@@ -180,7 +180,7 @@ This event can be of use, for example, when another class controls bindings and 
 
 ![](https://cdn-images-1.medium.com/max/800/0*6033LMExhDnrCE61.)
 
-That’s right. When an event is added, ``"addevent"`` and ``"addevent:NAME"`` events are fired, and when an event is removed, ``"removeevent"`` and ``"removeevent:NAME"`` events are fired, where ``NAME`` is an event name.
+When an event is added, ``"addevent"`` and ``"addevent:NAME"`` events are fired, and when an event is removed, ``"removeevent"`` and ``"removeevent:NAME"`` events are fired, where ``NAME`` is an event name.
 
 ```js
 this.on('addevent', handler);
@@ -189,7 +189,7 @@ this.on('removeevent', handler);
 this.on('removeevent:someevent', handler);
 ```
 
-One of the ways of its application can be the use of Matreshka and the event engine of the third-party library together. Let’s say, you want to place all handlers for the class only in one [on](http://matreshka.io/#!Matreshka-on%282%29) call, having made the code more readable and compact. With the help of ``addevent`` you catch all the following event initializations, and in the handler you check an event name against some conditions and initialize an event using API of the third-party library. In the example below there’s a code from a project which uses Fabric.js. ``"addevent"`` handler checks an event name for the presence of ``"fabric:"`` prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.
+One of the ways of its application can be the use of Matreshka.js and the event engine of the third-party library together. Let’s say, you want to place all handlers for the class only in one [on](http://matreshka.io/#!Matreshka-on%282%29) call, having made the code more readable and compact. With the help of ``addevent`` you catch all the following event initializations, and in the handler you check an event name against some conditions and initialize an event using API of the third-party library. In the example below there’s a code from a project which uses Fabric.js. ``"addevent"`` handler checks an event name for the presence of ``"fabric:"`` prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.
 
 ```js
 this.canvas = new fabric.Canvas(node);
@@ -212,7 +212,7 @@ this.on({
 
 ## Delegated events
 
-Now let’s get down to the most interesting: event delegations. The syntax of delegated events is as follows: ``"PATH@EVENT_NAME"``, where ``PATH ``is the way (properties are separated by a dot) to the object which ``EVENT_NAME`` event needs to be added to. Let’s consider examples below.
+Now let’s get down to the most interesting: event delegations. The syntax of delegated events is as follows: ``"PATH@EVENT_NAME"``, where ``PATH ``is a path (properties are separated by a dot) to an object which ``EVENT_NAME`` event needs to be added to. Let’s consider examples below.
 
 ### Example 1
 You want to add an event handler in ``"a"`` property which is an object.
@@ -329,7 +329,7 @@ Matreshka.trigger(this.a.b.c.d, 'someevent');
 
 ## DOM events
 
-Matreshka.js is known to allow the binding of DOM element on the page to some Matreshka’s instance property or an ordinary object implementing one-way or two-way data binding:
+Matreshka.js is known to allow the binding of DOM element on the page to some Matreshka.js instance property or an ordinary object implementing one-way or two-way data binding:
 
 ```js
 this.bindNode('x', '.my-node');
@@ -416,11 +416,11 @@ In this easy way you can listen to all data changing instead of a manual propert
 
 ## Events of Matreshka.Array class
 
-Everything is much more interesting with an array. [Matreshka.Array](http://matreshka.io/#!Matreshka.Array) includes lots of useful events which give an opportunity to find out what has happened in the collection: an item insertion, an item removing, resorting, which method has been called...
+[Matreshka.Array](http://matreshka.io/#!Matreshka.Array) includes lots of useful events which give an opportunity to find out what has happened in the collection: an item insertion, an item removing, resorting, which method has been called...
 
 Let me remind you that ``Matreshka.Array`` is a class which is responsible for the implementation of collections in Matreshka.js framework. The class completely duplicates the methods of built-in [Array.prototype](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype), and a programmer doesn’t have to think which method to call in order to add or remove something. The information you should know about ``Matreshka.Array`` events:
 
-- On calling modifying methods which have been borrowed from ``Array.prototype``, the corresponding event (``"push"``, ``"splice"``, ``"pop"``...) is fired
+- On calling modifying methods which have been borrowed from ``Array.prototype``, the corresponding event (``"push"``, ``"splice"``, ``"pop"``...) is fired.
 - On inserting items into the array, ``"add"`` and ``"addone"`` events are fired. Using the first one, an array of inserted items gets to ``"added"`` property of an event object. Using the second one, one inserted item gets to ``"addedItem"`` property, and the event is fired so many times according to how many items have been added.
 - On removing items the same logic is used: ``"remove"`` is fired passing an array of removed items to ``"removed"`` property of an event object, and ``"removeone"`` is fired on each removed item, passing one removed element to property ``"removedItem"``.
 - On any modifications of collection, ``"modify"`` event is fired. I. е. to catch ``"remove"`` and ``"add"`` events separately isn’t obligatory.
