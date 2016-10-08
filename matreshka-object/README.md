@@ -2,11 +2,11 @@
 
 ![](assets/login-form-screenshot.png)
 
-This example explains a purpose of [Matreshka.Object](https://matreshka.io/#!Matreshka.Object). We're going to implement a simple login form with two text fields: login and password and two checkboxes: «show password» and «remember me». There’s also one button: «sign in». Let’s say that the validation of the form is passed when the login length is not less than 4 characters and the password one is not less than 5 characters.
+This example explains a purpose of [Matreshka.Object](https://matreshka.io/#!Matreshka.Object). We're going to implement a simple login form with two text fields: login and password and two checkboxes: "show password" and "remember me". There’s also one button: "sign in". Let’s say that the validation of the form is passed and "sign in" button is enabled when the login length is not less than 4 characters and the password length  is not less than  5 characters.
 
 [**Demo**](https://matreshkajs.github.io/examples-and-tutorials/matreshka-object/)
 
-A little theory: ``Matreshka.Object`` plays the role of the class which creates objects of a key-value type. In each class instance **properties which are responsible for data** (the ones that will be passed to a server, for example) can be separated from other properties (the ones that the server doesn’t need but define the application behavior). In this case, login, password and “remember me” are the data which we send to the server, but the property that defines if the form is valid is not passed.
+A little theory: ``Matreshka.Object`` creates objects of a key-value type. In each class instance **properties which are responsible for data** (the ones that will be passed to a server, for example) can be separated from other properties (the ones that the server doesn’t need but define the application behavior). In this case, login, password and "remember me" are the data which we send to the server, but the property that defines if the form is valid is not passed.
 
 You can find more detailed information about this class [in the documentation](https://matreshka.io/#!Matreshka.Object).
 
@@ -118,7 +118,7 @@ Add the form submission event.
 })
 ```
 
-``"submit"`` is an ordinary DOM or jQuery event (is jQuery is used), sandbox is our form (``".login-form"``). Such an event and a key must be separated by the double colon. This is syntactic sugar of DOM events, i. e. the event can be added in any other way:
+``"submit"`` is an ordinary DOM or jQuery event (if jQuery is used), sandbox is our form (``".login-form"``). Such an event and a key must be separated by the double colon. This is syntactic sugar of DOM events, i. e. the event can be added in any other way:
 
 ```js
 this.nodes.sandbox.addEventListener("submit", evt => { ... });
