@@ -2,8 +2,10 @@
 
 ## CodeMirror
 
+Initializes a binding of [CodeMirror editor](http://codemirror.net/).
+
 ```js
-const codeMirror = {
+const codeMirror = () => ({
     on(callback) {
         this.CodeMirror.on('change', callback);
     },
@@ -18,6 +20,9 @@ const codeMirror = {
             lineNumbers: true
         });
     }
-}
+});
+
+// usage
+this.bindNode('code', 'textarea', codeMirror());
 ```
                 
