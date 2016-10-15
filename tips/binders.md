@@ -3,7 +3,7 @@
 ## CodeMirror
 
 ```js
-{
+const codeMirror = {
     on(callback) {
         this.CodeMirror.on('change', callback);
     },
