@@ -2,7 +2,7 @@
 	"embed": [{
 		"type": "htmlpage",
 		"label": "Result",
-		"url": "//matreshkajs.github.io/examples-and-tutorials/contact-list/"
+		"url": "//matreshkajs.github.io/matreshka-examples-and-tutorials/contact-list/"
 	}, {
 		"type": "html",
 		"label": "index.html",
