@@ -4,7 +4,7 @@
 
 This example explains a purpose of [Seemple.Object](https://seemple.js.org/#!Seemple.Object). We're going to implement a simple login form with two text fields: login and password and two checkboxes: "show password" and "remember me". There’s also one button: "sign in". Let’s say that the validation of the form is passed and "sign in" button is enabled when the login length is not less than 4 characters and the password length  is not less than  5 characters.
 
-[**Demo**](https://seemplejs.github.io/examples-and-tutorials/seemple-object/)
+[**Demo**](https://finom.github.io/seemple-examples-and-tutorials/seemple-object/)
 
 A little theory: ``Seemple.Object`` creates objects of a key-value type. In each class instance **properties which are responsible for data** (the ones that will be passed to a server, for example) can be separated from other properties (the ones that the server doesn’t need but define the application behavior). In this case, login, password and "remember me" are the data which we send to the server, but the property that defines if the form is valid is not passed.
 
