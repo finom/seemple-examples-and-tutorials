@@ -3,6 +3,6 @@
 	"embed": [{
 		"type": "htmlpage",
 		"label": "Result",
-		"url": "//finom.github.io/seemple-todomvc/"
+		"url": "//finom.github.io/seemple-examples-and-tutorials/todomvc/"
 	}]
 }
