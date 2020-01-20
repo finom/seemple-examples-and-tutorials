@@ -14,7 +14,7 @@ class Todos extends Seemple.Array {
         this
             // Add the dependency of the ``"leftLength"`` property on ``"length"`` and ``"completedLength"`` ones, and use their difference as a value. The application listens to the changes in these properties calculating ``“leftLength"`` on every their changing.
             .calc('leftLength', ['length', 'completedLength'], (length, completedLength) => length - completedLength)
-            // The ``"bindings"`` method adds data bindings between the properties of the class instance and DOM nodes. The ``"events"`` method, as you may guess, adds the event handlers. These names of the methods are not special; they group different actions for the code purity. After their launching, take the data out of the local storage and restore the todo items from it using [recreate](https://seemple.js.org/#!Seemple.Array-recreate) method. After all we initialize [a router](https://github.com/seemplejs/seemple-router).
+            // The ``"bindings"`` method adds data bindings between the properties of the class instance and DOM nodes. The ``"events"`` method, as you may guess, adds the event handlers. These names of the methods are not special; they group different actions for the code purity. After their launching, take the data out of the local storage and restore the todo items from it using [recreate](https://seemple.js.org/#!Seemple.Array-recreate) method. After all we initialize [a router](https://github.com/finom/seemple-router).
 
             .bindings()
             .events()

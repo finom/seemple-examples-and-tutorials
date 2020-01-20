@@ -152,4 +152,4 @@ loginForm.password = "roundhouse_kick";
 loginForm.showPassword = true;
 ```
 
-Further reading: [Seemple.Array](https://github.com/seemplejs/examples/tree/master/seemple-array)
+Further reading: [Seemple.Array](https://github.com/finom/seemple-examples-and-tutorials/tree/master/seemple-array)

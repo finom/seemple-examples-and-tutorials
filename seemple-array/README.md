@@ -2,7 +2,7 @@
 
 ![](assets/table-screenshot.png)
 
-This example explains a purpose of [Seemple.Array](https://seemple.js.org/#!Seemple.Array). Before reading you need to be familiar with ``Seemple.Object``. A short tutorial about the usage of ``Seemple.Object``  [lives there](https://github.com/seemplejs/seemple-examples-and-tutorials/tree/master/seemple-object).
+This example explains a purpose of [Seemple.Array](https://seemple.js.org/#!Seemple.Array). Before reading you need to be familiar with ``Seemple.Object``. A short tutorial about the usage of ``Seemple.Object``  [lives there](https://github.com/finom/seemple-examples-and-tutorials/tree/master/seemple-object).
 
 Let’s say the task is to display a list of some people as a table. So as not to make the example more complicated, let’s place the prepared data into ``data`` variable.
 
