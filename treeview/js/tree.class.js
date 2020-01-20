@@ -1,5 +1,5 @@
 /* global TreeLeaf */
-class Tree extends Matreshka.Array {
+class Tree extends Seemple.Array {
     get Model() {
         return TreeLeaf;
     }

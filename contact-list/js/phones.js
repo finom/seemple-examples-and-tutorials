@@ -1,5 +1,5 @@
 /* global Phone */
-class Phones extends Matreshka.Array {
+class Phones extends Seemple.Array {
     get Model() {
         return Phone;
     }

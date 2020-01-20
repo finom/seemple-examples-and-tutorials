@@ -1,0 +1,8 @@
+{
+	"linenums": true,
+	"embed": [{
+		"type": "htmlpage",
+		"label": "Result",
+		"url": "//finom.github.io/seemple-todomvc/"
+	}]
+}

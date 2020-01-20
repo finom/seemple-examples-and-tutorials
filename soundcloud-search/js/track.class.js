@@ -1,4 +1,4 @@
-class Track extends Matreshka.Object {
+class Track extends Seemple.Object {
     constructor(data, parent) {
         super({
             title: data.title,
@@ -12,8 +12,8 @@ class Track extends Matreshka.Object {
             .bindNode({
                 artwork_url: ':sandbox .artwork',
                 stream: ':sandbox audio'
-            }, Matreshka.binders.prop('src'))
-            .bindNode('title', ':sandbox .title', Matreshka.binders.html());
+            }, Seemple.binders.prop('src'))
+            .bindNode('title', ':sandbox .title', Seemple.binders.html());
     }
 
     play() {

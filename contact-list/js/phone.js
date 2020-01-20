@@ -1,4 +1,4 @@
-class Phone extends Matreshka.Object {
+class Phone extends Seemple.Object {
     constructor(data, parent) {
         super(data);
         this.set('visible', true)
@@ -8,10 +8,10 @@ class Phone extends Matreshka.Object {
                     const fields = this.$('[data-key]');
 
                     for (let field of fields) { // eslint-disable-line prefer-const
-                        this.bindNode(field.dataset.key, field, Matreshka.binders.text());
+                        this.bindNode(field.dataset.key, field, Seemple.binders.text());
                     }
 
-                    this.bindNode('visible', ':sandbox', Matreshka.binders.display());
+                    this.bindNode('visible', ':sandbox', Seemple.binders.display());
                 }
             });
     }

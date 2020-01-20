@@ -3,7 +3,7 @@
 	"embed": [{
 		"type": "htmlpage",
 		"label": "Result",
-		"url": "//matreshkajs.github.io/matreshka-examples-and-tutorials/treeview/"
+		"url": "//finom.github.io/seemple-examples-and-tutorials/treeview/"
 	}, {
 		"type": "html",
 		"label": "index.html",

@@ -1,5 +1,5 @@
 /* globals fakeData, Phones */
-class Application extends Matreshka.Object {
+class Application extends Seemple.Object {
     constructor() {
         super();
         this

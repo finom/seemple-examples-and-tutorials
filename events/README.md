@@ -1,11 +1,11 @@
 # The events
 
-The article explains events in Matreshka.js framework. They can be called a heart of Matreshka.js because they power all the magic happened at ``calc``, ``bindNode``, ``instantiate`` and other methods.
+The article explains events in Seemple.js framework. They can be called a heart of Seemple.js because they power all the magic happened at ``calc``, ``bindNode``, ``instantiate`` and other methods.
 
 ## Basics
 ### Custom events
 
-Let’s start with the simplest thing. In Matreshka.js events can be added with the help of [on](http://matreshka.io/#!Matreshka-on) method.
+Let’s start with the simplest thing. In Seemple.js events can be added with the help of [on](https://seemple.js.org/#!Seemple-on) method.
 
 ```js
 const handler = () => {
@@ -20,23 +20,23 @@ Where the list of events separated by spaces can be passed to.
 this.on('someevent1 someevent2', handler);
 ```
 
-Static [Matreshka.on](http://matreshka.io/#!Matreshka.on) method is used to declare an event handler for a custom object (which is or is not ``Matreshka`` instance) (the difference is only that the target object is the first argument but not ``this``).
+Static [Seemple.on](https://seemple.js.org/#!Seemple.on) method is used to declare an event handler for a custom object (which is or is not ``Seemple`` instance) (the difference is only that the target object is the first argument but not ``this``).
 
 ```js
 const object = {};
-Matreshka.on(object, 'someevent', handler);
+Seemple.on(object, 'someevent', handler);
 ```
 
-Events can be fired with [trigger](http://matreshka.io/#!Matreshka-trigger) method.
+Events can be fired with [trigger](https://seemple.js.org/#!Seemple-trigger) method.
 
 ```js
 this.trigger('someevent');
 ```
 
-Use the [static alternative of the method](http://matreshka.io/#!Matreshka.trigger) for custom objects.
+Use the [static alternative of the method](https://seemple.js.org/#!Seemple.trigger) for custom objects.
 
 ```js
-Matreshka.trigger(object, 'someevent');
+Seemple.trigger(object, 'someevent');
 ```
 
 At the same time, you can pass some data to the handler having determined the first and the following arguments.
@@ -51,17 +51,17 @@ this.trigger('someevent', 1, 2, 3);
 Or
 
 ```js
-Matreshka.on(object, 'someevent', (a, b, c) => {
+Seemple.on(object, 'someevent', (a, b, c) => {
   alert([a, b, c]); // 1, 2, 3
 });
-Matreshka.trigger(object, 'someevent', 1, 2, 3);
+Seemple.trigger(object, 'someevent', 1, 2, 3);
 ```
 
-You can notice Backbone syntax here. That’s right: the first lines of Matreshka.js code were being written under the impression of Backbone (even the code has originally been borrowed from it, though it has undergone substantial transformation later).
+You can notice Backbone syntax here. That’s right: the first lines of Seemple.js code were being written under the impression of Backbone (even the code has originally been borrowed from it, though it has undergone substantial transformation later).
 
-Hereafter, in this post, I will show alternative methods which use ``this`` key-word (except the examples of delegated events). Just remember that [on](http://matreshka.io/#!Matreshka.on), [once](http://matreshka.io/#!Matreshka.once), [onDebounce](http://matreshka.io/#!Matreshka.onDebounce), [trigger](http://matreshka.io/#!Matreshka.trigger), [set](http://matreshka.io/#!Matreshka.set), [bindNode](http://matreshka.io/#!Matreshka.bindNode) and other methods of Matreshka.js have got static alternatives which accept a custom target object as the first argument.
+Hereafter, in this post, I will show alternative methods which use ``this`` key-word (except the examples of delegated events). Just remember that [on](https://seemple.js.org/#!Seemple.on), [once](https://seemple.js.org/#!Seemple.once), [onDebounce](https://seemple.js.org/#!Seemple.onDebounce), [trigger](https://seemple.js.org/#!Seemple.trigger), [set](https://seemple.js.org/#!Seemple.set), [bindNode](https://seemple.js.org/#!Seemple.bindNode) and other methods of Seemple.js have got static alternatives which accept a custom target object as the first argument.
 
-Besides ``on`` method, there are two more: [once](http://matreshka.io/#!Matreshka.once) and [onDebounce](http://matreshka.io/#!Matreshka.onDebounce). The first one adds a handler that can be called only once.
+Besides ``on`` method, there are two more: [once](https://seemple.js.org/#!Seemple.once) and [onDebounce](https://seemple.js.org/#!Seemple.onDebounce). The first one adds a handler that can be called only once.
 
 ```js
 this.once('someevent', () => {
@@ -92,7 +92,7 @@ this.onDebounce('someevent', handler, 1000);
 
 ### Events of property changing
 
-When a property is changed, Matreshka.js fires an event: ``"change:KEY"``.
+When a property is changed, Seemple.js fires an event: ``"change:KEY"``.
 
 ```js
 this.on('change:x', () => {
@@ -101,7 +101,7 @@ this.on('change:x', () => {
 this.x = 42;
 ```
 
-In case you want to pass some data to the event handler or change a property value without calling ``"change:KEY"`` event, instead of a usual assignment use [Matreshka#set](http://matreshka.io/#!Matreshka-set) method (or static [Matreshka.set](http://matreshka.io/#!Matreshka.set) method) which accepts three arguments: a key, a value and an object with data or special flags.
+In case you want to pass some data to the event handler or change a property value without calling ``"change:KEY"`` event, instead of a usual assignment use [Seemple#set](https://seemple.js.org/#!Seemple-set) method (or static [Seemple.set](https://seemple.js.org/#!Seemple.set) method) which accepts three arguments: a key, a value and an object with data or special flags.
 
 ```js
 this.on('change:x', evt => {
@@ -117,7 +117,7 @@ You can change a property without calling an event handler in this way:
 this.set('x', 9000, { silent: true });
 ```
 
-``set`` method supports some more flags, the description of which would make us go beyond the topic of the article, so I refer you to the [documentation of the method](http://matreshka.io/#!Matreshka-set).
+``set`` method supports some more flags, the description of which would make us go beyond the topic of the article, so I refer you to the [documentation of the method](https://seemple.js.org/#!Seemple-set).
 
 ### Events which are being fired before a property changing
 
@@ -144,7 +144,7 @@ this.set('x', 9000, { silent: true });
 
 ### Events of a property removing
 
-On removing properties with [remove](http://matreshka.io/#!Matreshka-remove) method, ``"delete:KEY"`` and ``delete`` events are fired.
+On removing properties with [remove](https://seemple.js.org/#!Seemple-remove) method, ``"delete:KEY"`` and ``delete`` events are fired.
 
 ```js
 this.on('delete:x', () => {
@@ -189,7 +189,7 @@ this.on('removeevent', handler);
 this.on('removeevent:someevent', handler);
 ```
 
-One of the ways of its application can be the use of Matreshka.js and the event engine of the third-party library together. Let’s say, you want to place all handlers for the class only in one [on](http://matreshka.io/#!Matreshka-on%282%29) call, having made the code more readable and compact. With the help of ``addevent`` you catch all the following event initializations, and in the handler you check an event name against some conditions and initialize an event using API of the third-party library. In the example below there’s a code from a project which uses Fabric.js. ``"addevent"`` handler checks an event name for the presence of ``"fabric:"`` prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.
+One of the ways of its application can be the use of Seemple.js and the event engine of the third-party library together. Let’s say, you want to place all handlers for the class only in one [on](https://seemple.js.org/#!Seemple-on%282%29) call, having made the code more readable and compact. With the help of ``addevent`` you catch all the following event initializations, and in the handler you check an event name against some conditions and initialize an event using API of the third-party library. In the example below there’s a code from a project which uses Fabric.js. ``"addevent"`` handler checks an event name for the presence of ``"fabric:"`` prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.
 
 ```js
 this.canvas = new fabric.Canvas(node);
@@ -223,43 +223,43 @@ this.on('a@someevent', handler);
 The handler will be called when ``"someevent"`` event has fired in the ``"a"`` object.
 
 ```js
-// if a is an instance of Matreshka
+// if a is an instance of Seemple
 this.a.trigger('someevent');
-// if a is an ordinary object or an instance of Matreshka
-Matreshka.trigger(this.a, 'someevent');
+// if a is an ordinary object or an instance of Seemple
+Seemple.trigger(this.a, 'someevent');
 ```
 
 Also, the handler can be declared before ``"a"`` property is declared. If ``"a"`` property is rewritten into another object, inner mechanism of the framework will catch this change, remove the handler from the previous property value and add it to a new value (if the new value is an object as well).
 
 ```js
-this.a = new Matreshka();
+this.a = new Seemple();
 this.a.trigger('someevent');
 //or
 this.a = {};
-Matreshka.trigger(this.a, 'someevent');
+Seemple.trigger(this.a, 'someevent');
 ```
 
 The handler will be called again.
 
 ### Example 2
 
-What if our object is a collection inherited from [Matreshka.Array](http://matreshka.io/#!Matreshka.Array) or [Matreshka.Object](http://matreshka.io/#!Matreshka.Object) (``Matreshka.Object`` is a collection of a key-value type)? We don’t know beforehand in which item of the collection an event will be fired (in the first or in the tenth one). That’s why, instead of a property name for these classes we can use an asterisk ``*`` meaning that an event handler must be called only when an event is fired upon one of the elements included into the collection.
+What if our object is a collection inherited from [Seemple.Array](https://seemple.js.org/#!Seemple.Array) or [Seemple.Object](https://seemple.js.org/#!Seemple.Object) (``Seemple.Object`` is a collection of a key-value type)? We don’t know beforehand in which item of the collection an event will be fired (in the first or in the tenth one). That’s why, instead of a property name for these classes we can use an asterisk ``*`` meaning that an event handler must be called only when an event is fired upon one of the elements included into the collection.
 
 ```js
 this.on('*@someevent', handler);
 ```
-If the included element is an instance of ``Matreshka``:
+If the included element is an instance of ``Seemple``:
 
 ```js
-this.push(new Matreshka());
+this.push(new Seemple());
 this[0].trigger('someevent');
 ```
 
-Or, in case the included element is an ordinary object or an instance of ``Matreshka``:
+Or, in case the included element is an ordinary object or an instance of ``Seemple``:
 
 ```js
 this.push({});
-Matreshka.trigger(this[0], 'someevent');
+Seemple.trigger(this[0], 'someevent');
 ```
 
 ### Example 3
@@ -269,7 +269,7 @@ Let’s go deeper. Suppose we have ``"a"`` property that contains an object with
 this.on('a.b@someevent', handler);
 this.a.b.trigger('someevent');
 //or
-Matreshka.trigger(this.a.b, 'someevent');
+Seemple.trigger(this.a.b, 'someevent');
 ```
 
 ### Example 4
@@ -279,7 +279,7 @@ We have ``"a"`` property which is a collection. We want to listen to ``"someeven
 this.on('a.*@someevent', handler);
 this.a[0].trigger('someevent');
 //or
-Matreshka.trigger(this.a[0], 'someevent');
+Seemple.trigger(this.a[0], 'someevent');
 ```
 
 ### Example 5
@@ -289,7 +289,7 @@ We have a collection containing objects with ``"a"`` property which is an object
 this.on('*.a@someevent', handler);
 this[0].a.trigger('someevent');
 //or
-Matreshka.trigger(this[0].a, 'someevent');
+Seemple.trigger(this[0].a, 'someevent');
 ```
 
 ### Example 6
@@ -302,12 +302,12 @@ We have a collection which items have ``"a"`` property that is a collection. In 
 this.on('*.a.*.b@someevent', handler);
 this[0].a[0].b.trigger('someevent');
 //or
-Matreshka.trigger(this[0].a[0].b, 'someevent');
+Seemple.trigger(this[0].a[0].b, 'someevent');
 ```
 
 ### Example 7. Various combinations
 
-Besides custom events, you can use the ones which are built in Matreshka.js as well. Instead of ``"someevent"`` you can use ``"change:KEY"`` event described above or ``"modify"`` which allows to listen to any changes in ``Matreshka.Object`` or ``Matreshka.Array``.
+Besides custom events, you can use the ones which are built in Seemple.js as well. Instead of ``"someevent"`` you can use ``"change:KEY"`` event described above or ``"modify"`` which allows to listen to any changes in ``Seemple.Object`` or ``Seemple.Array``.
 
 ```js
 // in “a” object there’s “b” object,
@@ -324,20 +324,20 @@ Let me remind you that delegated events are added dynamically. On declaring a ha
 ```js
 this.on('a.b.c.d@someevent', handler);
 this.a.b = { c: { d: {} } };
-Matreshka.trigger(this.a.b.c.d, 'someevent');
+Seemple.trigger(this.a.b.c.d, 'someevent');
 ```
 
 ## DOM events
 
-Matreshka.js is known to allow the binding of DOM element on the page to some Matreshka.js instance property or an ordinary object implementing one-way or two-way data binding:
+Seemple.js is known to allow the binding of DOM element on the page to some Seemple.js instance property or an ordinary object implementing one-way or two-way data binding:
 
 ```js
 this.bindNode('x', '.my-node');
 //or
-Matreshka.bindNode(object, 'x', '.my-node');
+Seemple.bindNode(object, 'x', '.my-node');
 ```
 
-[More detailed information about bindNode method](https://matreshka.io/#!Matreshka-bindNode).
+[More detailed information about bindNode method](https://seemple.js.org/#!Seemple-bindNode).
 
 Before or after the declaration of the binding you can create a handler that listens to DOM events of the bound element. The syntax is as follows: ``"DOM_EVENT::KEY"``, where ``DOM_EVENT`` is DOM or jQuery event (if jQuery is used), and ``KEY`` is a key of a bound property. ``DOM_EVENT`` and ``KEY`` are separated by a double colon.
 
@@ -377,7 +377,7 @@ this.on('click::x(.my-inner-node)', handler);
 
 If we need to create a handler for some element included into a sandbox, a little simplified ``"DOM_EVENT::(SELECTOR)"`` syntax is used.
 
-Let me remind you that a sandbox limits the influence of ``Matreshka`` instance or a custom object to one element in your web application. For example, if there are several widgets on the page and each widget is driven by its class, it’s highly recommended to set a sandbox for each class referring to the root element of the widget which this class has influence on.
+Let me remind you that a sandbox limits the influence of ``Seemple`` instance or a custom object to one element in your web application. For example, if there are several widgets on the page and each widget is driven by its class, it’s highly recommended to set a sandbox for each class referring to the root element of the widget which this class has influence on.
 
 ```js
 this.bindNode('sandbox', '.my-node');
@@ -390,9 +390,9 @@ This code does absolutely the same thing:
 this.on('click::sandbox(.my-inner-node)', handler);
 ```
 
-## Events of Matreshka.Object class
+## Events of Seemple.Object class
 
-Remember ``Matreshka.Object`` is a class that is responsible for data of a key-value type. You can read more about this class [in documentation](http://ru.matreshka.io/#!Matreshka.Object).
+Remember ``Seemple.Object`` is a class that is responsible for data of a key-value type. You can read more about this class [in documentation](http://ru.seemple.js.org/#!Seemple.Object).
 
 On every changing of properties which are responsible for data, ``"set"`` event is fired.
 
@@ -414,11 +414,11 @@ this.on('modify', handler);
 
 In this easy way you can listen to all data changing instead of a manual property listening.
 
-## Events of Matreshka.Array class
+## Events of Seemple.Array class
 
-[Matreshka.Array](http://matreshka.io/#!Matreshka.Array) includes lots of useful events which give an opportunity to find out what has happened in the collection: an item insertion, an item removing, resorting, which method has been called...
+[Seemple.Array](https://seemple.js.org/#!Seemple.Array) includes lots of useful events which give an opportunity to find out what has happened in the collection: an item insertion, an item removing, resorting, which method has been called...
 
-Let me remind you that ``Matreshka.Array`` is a class which is responsible for the implementation of collections in Matreshka.js framework. The class completely duplicates the methods of built-in [Array.prototype](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype), and a programmer doesn’t have to think which method to call in order to add or remove something. The information you should know about ``Matreshka.Array`` events:
+Let me remind you that ``Seemple.Array`` is a class which is responsible for the implementation of collections in Seemple.js framework. The class completely duplicates the methods of built-in [Array.prototype](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype), and a programmer doesn’t have to think which method to call in order to add or remove something. The information you should know about ``Seemple.Array`` events:
 
 - On calling modifying methods which have been borrowed from ``Array.prototype``, the corresponding event (``"push"``, ``"splice"``, ``"pop"``...) is fired.
 - On inserting items into the array, ``"add"`` and ``"addone"`` events are fired. Using the first one, an array of inserted items gets to ``"added"`` property of an event object. Using the second one, one inserted item gets to ``"addedItem"`` property, and the event is fired so many times according to how many items have been added.
@@ -439,4 +439,4 @@ this.on('addone', function(evt) {
 this.push(1, 2, 3);
 ```
 
-In order not to copy the whole documentation here, please refer to [Matreshka.Array documentation](http://matreshka.io/#!Matreshka.Array) on your own.
+In order not to copy the whole documentation here, please refer to [Seemple.Array documentation](https://seemple.js.org/#!Seemple.Array) on your own.

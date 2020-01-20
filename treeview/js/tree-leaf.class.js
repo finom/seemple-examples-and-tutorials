@@ -1,5 +1,5 @@
 /* global Tree */
-class TreeLeaf extends Matreshka.Object {
+class TreeLeaf extends Seemple.Object {
     constructor(data) {
         super();
         this
@@ -21,15 +21,15 @@ class TreeLeaf extends Matreshka.Object {
             expandBtn: ':sandbox .expand',
             label: {
                 node: ':sandbox .label',
-                binder: Matreshka.binders.text()
+                binder: Seemple.binders.text()
             },
             expanded: {
                 node: ':sandbox',
-                binder: Matreshka.binders.className('closed', false)
+                binder: Seemple.binders.className('closed', false)
             },
             subTreeLength: {
                 node: ':sandbox',
-                binder: Matreshka.binders.className('vtree-has-children')
+                binder: Seemple.binders.className('vtree-has-children')
             }
         });
     }

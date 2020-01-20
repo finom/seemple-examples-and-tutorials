@@ -1,8 +1,8 @@
 // store html binder in a short variable
-const htmlBinder = Matreshka.binders.html;
+const htmlBinder = Seemple.binders.html;
 
-// create a class that inherits Matreshka
-class Application extends Matreshka {
+// create a class that inherits Seemple
+class Application extends Seemple {
     constructor() {
         super();
 

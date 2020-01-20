@@ -1,5 +1,5 @@
 /* global Track */
-class Tracks extends Matreshka.Array {
+class Tracks extends Seemple.Array {
     get Model() {
         return Track;
     }
@@ -12,7 +12,7 @@ class Tracks extends Matreshka.Array {
         super();
         this
             .set({
-                query: localStorage.matreshkaTracksQuery || '',
+                query: localStorage.seempleTracksQuery || '',
                 soundCloudClientID
             })
             .bindNode({
@@ -25,7 +25,7 @@ class Tracks extends Matreshka.Array {
                 'submit::form': (evt) => {
                     evt.preventDefault();
                     this.loadTracks().then(data => this.recreate(data));
-                    localStorage.matreshkaTracksQuery = this.query;
+                    localStorage.seempleTracksQuery = this.query;
                 },
                 '*@ended::stream': (evt) => {
                     const track = evt.self;

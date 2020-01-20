@@ -1,4 +1,4 @@
-class LoginForm extends Matreshka.Object {
+class LoginForm extends Seemple.Object {
     constructor() {
         super({
             userName: '',
@@ -17,7 +17,7 @@ class LoginForm extends Matreshka.Object {
                 rememberMe: ':sandbox .remember-me'
             })
             .bindNode('isValid', ':sandbox .submit',
-                Matreshka.binders.className('disabled', false))
+                Seemple.binders.className('disabled', false))
             .bindNode('showPassword', ':bound(password)', {
                 getValue: null,
                 setValue(v) {

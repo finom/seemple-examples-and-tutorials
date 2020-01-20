@@ -1,5 +1,5 @@
 # Contact list
 
-[Demo](http://matreshkajs.github.io/matreshka-examples-and-tutorials/contact-list/)
+[Demo](http://finom.github.io/seemple-examples-and-tutorials/contact-list/)
 
 Contact list application with CRUD features.

@@ -1,5 +1,5 @@
 /* global marked */
-class Application extends Matreshka {
+class Application extends Seemple {
     constructor() {
         super();
         this.set('source', localStorage.mdSource || '# Hey')
@@ -7,7 +7,7 @@ class Application extends Matreshka {
                 source: '.source',
                 result: {
                     node: '.result',
-                    binder: Matreshka.binders.html()
+                    binder: Seemple.binders.html()
                 }
             })
             .calc('result', 'source', marked, { debounceCalcDelay: 300 })

@@ -1,5 +1,5 @@
 /* globals data */
-class User extends Matreshka.Object {
+class User extends Seemple.Object {
     constructor(data) {
         super(data);
         this.on('render', () => {
@@ -7,13 +7,13 @@ class User extends Matreshka.Object {
                 name: ':sandbox .name',
                 email: ':sandbox .email',
                 phone: ':sandbox .phone'
-            }, Matreshka.binders.html());
+            }, Seemple.binders.html());
         });
     }
 }
 
 
-class Users extends Matreshka.Array {
+class Users extends Seemple.Array {
     get Model() {
         return User;
     }

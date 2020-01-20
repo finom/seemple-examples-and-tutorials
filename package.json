@@ -1,31 +1,33 @@
 {
-  "name": "matreshka-examples",
+  "name": "seemple-examples",
   "version": "1.0.0",
-  "description": "Tiny Matreshka.js examples",
+  "description": "Tiny Seemple.js examples",
   "scripts": {
-    "test": "eslint . --ignore-pattern 'node_modules'",
-    "start": "http-server -p 8034 -o -s",
+    "test": "eslint . --ignore-pattern 'node_modules'  --ignore-pattern 'vendor'",
+    "dev": "http-server -p 8034 -o -s",
     "check-updates": "ncu",
-    "upgrade": "npm run check-updates -- --upgradeAll && npm install"
+    "upgrade": "npm run check-updates -- --upgradeAll && npm install",
+    "compile-todomvc-docs": "docco --output ./todomvc/docs ./todomvc/js/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matreshkajs/examples.git"
+    "url": "git+https://github.com/seemplejs/examples.git"
   },
   "keywords": [
-    "matreshka",
-    "matreshkajs"
+    "seemple",
+    "seemplejs"
   ],
   "author": "Andrey Gubanov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/matreshkajs/examples/issues"
+    "url": "https://github.com/seemplejs/examples/issues"
   },
-  "homepage": "https://github.com/matreshkajs/examples#readme",
+  "homepage": "https://github.com/seemplejs/examples#readme",
   "devDependencies": {
-    "eslint": "^4.8.0",
-    "eslint-config-airbnb-base": "^12.0.1",
-    "http-server": "^0.10.0",
-    "npm-check-updates": "^2.12.1"
+    "docco": "^0.8.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "http-server": "^0.12.1",
+    "npm-check-updates": "^4.0.1"
   }
 }
