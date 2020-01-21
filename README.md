@@ -15,5 +15,6 @@ If you've noticed problems (e. g. live example doesn't work), feel free to repor
 
 ### External repos
 - [jscompress.com](https://github.com/circlecell/jscompress.com)
+- [validatejavascript.com](https://github.com/circlecell/validatejavascript.com)
 
 (If you want to add a link to your repository, feel free to open a PR)
