@@ -1,3 +1,7 @@
+# Moved
+
+The examples and tutorials are in [finom/matreshka/examples](https://github.com/finom/matreshka/tree/main/examples) and run on [matreshka.js.org/examples](https://matreshka.js.org/examples/).
+
 # Seemple.js examples and tutorials
 
 This repo contains examples and important tutorials for Seemple.js framework to keep all additional teaching materials (besides [the main documentation](https://seemple.js.org/)) at a single place.
